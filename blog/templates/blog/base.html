@@ -1,26 +1,128 @@
-{% load staticfiles %}
+{% load static %}
+
 <html>
-    <head>
-        <title>Django Girls blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header">
-            {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            {% endif %}
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-        <div class="content container">
+<head>
+    <title>My recipes</title>
+    
+       <!-- Bootstrap core CSS -->
+    
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+     <!-- Icons -->
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+
+    <!-- Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+   
+   
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+
+<body id="page-top">
+        <!-- Navigation Bar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+          <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/">Vegetarian Recipes</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="index.html#portfolio">Recipes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="index.html#gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="index.html#about">About</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+        </nav>
+<section>
+    <div>
+         <hr>
+        {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}" class="top-menu">
+            <span class="glyphicon glyphicon-plus"></span>
+            <i class="fa fa-plus" ></i>
+        </a>
+        {% endif %}  
+    </div>
+    
+    <div class="content container">
             <div class="row">
                 <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
+                    {% block content %} {% endblock %}
                 </div>
             </div>
         </div>
-    </body>
+</section>
+
+
+<!-- Footer -->
+<footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="copyright">Copyright &copy; Your Website 2017</span>
+            </div>
+            <div class="col-md-4">
+              <ul class="list-inline social-buttons">
+                <li class="list-inline-item">
+                  <a href="">
+                    <i class="fa fa-pinterest"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="">
+                    <i class="fa fa-instagram"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="list-inline quicklinks">
+                <li class="list-inline-item">
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">Terms of Use</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Bootstrap core JavaScript -->
+     
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- JS file for this project -->
+  <script src="{% static 'main.js' %}"></script>
+
+</body>
 </html>

@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Vegetarian Recipe Book</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Karla:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <!--CSS for the Galery-->
+  <link href="css/blueimp-gallery.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+  <!-- Navigation Bar-->
+  <div>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Vegetarian Recipes</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Recipes</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="#portfolio">My recipes</a>
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- Carousel -->
+  <header>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <img class="d-block img-fluid" src="img/carousel/0.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block img-fluid" src="img/carousel/1.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block img-fluid" src="img/carousel/5.jpg" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block img-fluid" src="img/carousel/3.jpg" alt="Fourth slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block img-fluid" src="img/carousel/4.jpg" alt="Fifth slide">
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Recipes Types Portfolio Grid -->
+  <section class="bg-light" id="portfolio">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Recipes</h2>
+          <h3 class="section-subheading text-muted">Check our collections of healthy vegetarian meals </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="vegan.html">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-leaf fa-2x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Vegan</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="dessert.html">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-leaf fa-2x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Desserts</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="quick.html">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-leaf fa-2x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Quick</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="dinner.html">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-leaf fa-2x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Dinner-Party</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="soup.html">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-leaf fa-2x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Soups</h4>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 portfolio-item">
+          <a class="portfolio-link" href="salad.html">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fa fa-leaf fa-2x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
+          </a>
+          <div class="portfolio-caption">
+            <h4>Salads</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- The Gallery -->
+  <section id="gallery">
+    <div class=c ontainer>
+      <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Gallery</h2>
+          <h3 class="section-subheading text-muted">Check out the gallery of our recipes</h3>
+        </div>
+      </div>
+      <div id="links">
+        <div class="container">
+          <!--First row-->
+          <div class="row">
+            <div class="col-md-3 col-sm-6 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/1.jpg" title="Rice Noodles with Vegetables">
+                <img class="img-fluid" src="img/gallery/1.jpg" alt="Rice Noodles with Vegetables">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/2.jpg" title="Curry Omelette">
+                <img class="img-fluid" src="img/gallery/2.jpg" alt="Curry Omelette">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/3.jpg" title="Taco with Avocado">
+                <img class="img-fluid" src="img/gallery/3.jpg" alt="Taco with Avocado">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/4.jpg" title="Stir Fried Noodles">
+                <img class="img-fluid" src="img/gallery/4.jpg" alt="Stir Fried Noodles">
+              </a>
+            </div>
+          </div>
+          <p></p>
+          <!--Second row-->
+          <div class="row">
+            <div class="col-md-6 col-sm-6 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/5-full.jpg" title="Cheesy Pie with Asparagus">
+                <img class="img-fluid" src="img/gallery/5.jpg" alt="Cheesy Pie with Asparagus">
+              </a>
+            </div>
+            <div class="col-md-6 col-sm-6 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/6.jpg" title="Vegan Tomato Soup">
+                <img class="img-fluid" src="img/gallery/6.jpg" alt="Vegan Tomato Soup">
+              </a>
+            </div>
+          </div>
+          <p></p>
+           <!--Third row-->
+          <div class="row">
+            <div class="col-md-12 col-sm-12 portfolio-item">
+              <a class="portfolio-link" href="img/gallery/7-full.jpg" title="Breakfast Ideas">
+                <img class="img-fluid" src="img/gallery/7.jpg" alt="Breakfast Ideas">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+
+  <!-- About -->
+  <section class="bg-light" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">About</h2>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <p class=" text-muted">The website was created for 2ID60 Web Technology Course in the Eindhoven University of Technology </p>
+          <p class=" text-muted">No content on the website is owned by me</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <span class="copyright">Copyright &copy; Website 2017</span>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-pinterest"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!--Gallery JavaScript-->
+  <script src="js/blueimp-gallery.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- JS file for this project -->
+  <script src="js/main.js"></script>
+
+
+
+</body>
+
+</html>
