@@ -8,8 +8,10 @@
                     {{ post.published_date}} 
                     <span>by</span>
                     <span class = "author-date">{{post.author}}</span>
+                    <span><a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a></span>
             </div>
             <p>{{ post.text|linebreaksbr }}</p>
+            
         </div>
     {% endfor %}
 {% endblock %}

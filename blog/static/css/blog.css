@@ -15,20 +15,19 @@
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+  font-family: "Karla, ""Droid Serif", "Helvetica Neue", Helvetica, Arial,
 }
 
 .date {
     color: #000000ef;
-    font-size: 16px;
-    font-style: italic;
+    font-size: 10px;
     margin: 20px 0 30px;
     text-transform: uppercase;
     font-family: "Karla, ""Droid Serif", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
 }
 
-.author-date
+.date .author-date
 {
     color: rgba(46, 45, 45, 0.342);
 }
@@ -43,9 +42,9 @@ h1, h2, h3, h4 {
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #589e37;
-    float: right;
     font-size: 26pt;
     margin-right: 20px;
+    float: right;
    
 }
 
@@ -58,6 +57,9 @@ h1, h2, h3, h4 {
 }
 
 
+.comment {
+    margin: 20px 0px 20px 20px;
+}
 
 
 
@@ -185,7 +187,11 @@ body {
   h5,
   h6 {
     font-weight: 400;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Karla, ""Droid Serif", "Helvetica Neue", Helvetica, Arial;
+    color: #424243;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
   }
   
   section {
