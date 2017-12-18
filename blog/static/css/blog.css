@@ -21,7 +21,7 @@ h1, h2, h3, h4 {
 .date {
     color: #000000ef;
     font-size: 10px;
-    margin: 20px 0 30px;
+    margin: 10px 0 10px;
     text-transform: uppercase;
     font-family: "Karla, ""Droid Serif", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
@@ -469,6 +469,7 @@ body {
     text-align: center;
     color: white;
   }
+
   #portfolio
     .portfolio-item
     .portfolio-link
@@ -490,6 +491,10 @@ body {
     .portfolio-hover-content
     h4 {
     margin: 0;
+  }
+
+  .plusicon {
+    color:black;
   }
   #portfolio .portfolio-item .portfolio-caption {
     max-width: 400px;

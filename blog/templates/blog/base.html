@@ -94,13 +94,35 @@
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
-                    {% block content %} {% endblock %}
+                   
                 </div>
             </div>
         </div>
-        
     </section>
 
+    <!-- Portfolio Recipes Grid -->
+  <section class="bg-light" id="portfolio">
+    <div class="container">
+            <div class="row">
+     {% block yourposts %} {% endblock %}
+      </div>
+      <div class="row">
+         {% block content %} {% endblock %}
+      </div>
+      {% if user.is_authenticated %}
+      <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" href="">
+              <div id="dessert-portfolio-hover" class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-2x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/white.png" alt="">
+            </a>
+          </div>
+        {% endif %}
+    </div>
+  </section>
 
     <!-- Footer -->
     <footer>
