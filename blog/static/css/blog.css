@@ -27,7 +27,7 @@ h1, h2, h3, h4 {
       sans-serif;
 }
 
-.date .author-date
+.date .author-date, .comment-date
 {
     color: rgba(46, 45, 45, 0.342);
 }

@@ -11,7 +11,7 @@
     <h1>{{ post.title }}</h1>
     {% if post.published_date %}
     <div class="date">
-        {{ post.published_date}}
+        {{ post.published_date|date:'F d, Y'}}
         <span>by</span>
         <span class="author-date">{{post.author}}</span>
     </div>
@@ -25,17 +25,16 @@
 <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 {% for comment in post.comments.all %} {% if user.is_authenticated or comment.approved_comment %}
 <div class="comment">
-    <div class="date">
-        {{ comment.created_date }} {% if not comment.approved_comment %}
+    <div class="date comment-date">
+        {{ comment.created_date|date:'F d, Y' }} <span>at</span> {{ comment.created_date|date:'P' }} <span>by</span>  <strong>{{ comment.author }}</strong> {% if not comment.approved_comment %}
         <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}">
-            <span class="glyphicon glyphicon-remove"></span>
+            <span class="fa fa-times"></span>
         </a>
         <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}">
-            <span class="glyphicon glyphicon-ok"></span>
+            <span class="fa fa-check"></span>
         </a>
         {% endif %}
     </div>
-    <strong>{{ comment.author }}</strong>
     <p>{{ comment.text|linebreaks }}</p>
 </div>
 {% endif %} {% empty %}
