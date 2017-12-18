@@ -20,7 +20,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-
+   <!--Custom CSS-->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 
@@ -45,10 +45,10 @@
                                     <a class="nav-link js-scroll-trigger dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       Recipes
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <a class="dropdown-item" href="#">All</a>
-                                      <a class="dropdown-item" href="#">My posts</a>
-                                      <a class="dropdown-item" href="#">My drafts</a>
+                                    <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item nav-item" href="#">All</a>
+                                      <a class="dropdown-item nav-item" href="/">My posts</a>
+                                      <a class="dropdown-item nav-item" href="{% url 'post_draft_list' %}">My drafts</a>
                                     </div>
                                   </div>
                             {% else %}   
@@ -72,9 +72,11 @@
                     {% endif %}
                 </ul>
             </div>
+            
         </div>
-
     </nav>
+
+
     <section>
         <div>
             <hr> {% if user.is_authenticated %}
@@ -88,6 +90,7 @@
             </a>
             {% endif %}
         </div>
+        
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
@@ -95,6 +98,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
 
 
@@ -147,7 +151,7 @@
     <script src="{% static 'jquery-easing/jquery.easing.min.js' %}"></script>
 
     <!-- JS file for this project -->
-    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 
 </body>
 

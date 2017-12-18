@@ -7,7 +7,7 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200) #title can be the max of 200 characters 
     text = models.TextField()
-    image = models.ImageField(upload_to='posts', blank=True, null=True)
+    image = models.ImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     

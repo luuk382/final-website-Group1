@@ -62,8 +62,20 @@ h1, h2, h3, h4 {
 }
 
 
+.dropdown-item {
+  font-size: 70%;
+    font-weight: 400;
+   
+    letter-spacing: 0.5px;
+    color: rgb(128, 120, 120);
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
-
+  .dropdown-item.active,
+  .dropdown-item:hover {
+    color: #74d647;
+    background-color: transparent;
+  }
 
 
 
@@ -167,6 +179,10 @@ body {
   
   p {
     line-height: 1.75;
+    font-weight: 400;
+    font-family: "Karla, ""Droid Serif", "Helvetica Neue", Helvetica, Arial;
+    color: #424243;
+    font-size: 14px;
   }
   
   a {

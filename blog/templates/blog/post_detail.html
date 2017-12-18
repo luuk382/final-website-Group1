@@ -17,8 +17,10 @@
     </div>
     {% else %}
     <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-    {% endif %} {% if post.image %}
-    <img src="{{post.image.url}}" /> {% endif %}
+    {% endif %}
+    {% if post.image %}
+    <img src="{{post.image.url}}" /> 
+    {% endif %}
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 <hr>
