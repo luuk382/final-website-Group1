@@ -18,8 +18,10 @@ class Post(models.Model):
         ('Difficult', 'Difficult'),
     )
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_LEVELS, blank = False)
-    hours = models.IntegerField(default=0)
-    minutes = models.IntegerField(default=0)
+    qty = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(100), MinValueValidator(1)]
+     )
     cookingtime = models.CharField(default=0, max_length=3, help_text="Please enter time in minutes", blank = False)
     CATEGORY_TYPES = (
         ('Vegan', 'Vegan'),
