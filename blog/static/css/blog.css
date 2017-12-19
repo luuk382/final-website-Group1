@@ -27,6 +27,10 @@ h1, h2, h3, h4 {
       sans-serif;
 }
 
+#datePost {
+  font-size: 14px;
+}
+
 .date .author-date, .comment-date
 {
     color: rgba(46, 45, 45, 0.342);
@@ -45,6 +49,7 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
     float: right;
+    
    
 }
 
@@ -232,6 +237,13 @@ body {
       padding: 150px 0;
     }
   }
+
+  #addNewPost {
+     padding-top: 70px;
+     padding-bottom: 30px;
+     margin-bottom: 5px;
+     
+  }
   
   .btn {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -244,29 +256,31 @@ body {
   }
   
   .btn-primary {
-    background-color: #d4ccb2;
-    border-color: #d4ccb2;
+    background-color: #b2c7ae;
+    border-color: #b2c7ae;
+    margin-bottom: 7px;
   }
+
   
   .btn-primary:active,
   .btn-primary:focus,
   .btn-primary:hover {
-    background-color: #fec810 !important;
-    border-color: #fec810 !important;
+    background-color: #74d647 !important;
+    border-color:#74d647 !important;
     color: white;
   }
   .btn-primary:active,
   .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem #74d647 !important;
   }
   
   ::-moz-selection {
-    background: #fed136;
+    background: #74d647;
     text-shadow: none;
   }
   
   ::selection {
-    background: #fed136;
+    background: #74d647;
     text-shadow: none;
   }
   

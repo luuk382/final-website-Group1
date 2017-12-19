@@ -12,7 +12,6 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    text = models.TextField()
     DIFFICULTY_LEVELS = (
         ('Easy', 'Easy'),
         ('Medium', 'Medium'),
@@ -22,7 +21,15 @@ class Post(models.Model):
     hours = models.IntegerField(default=0)
     minutes = models.IntegerField(default=0)
     cookingtime = models.CharField(default=0, max_length=3, help_text="Please enter time in minutes", blank = False)
-
+    CATEGORY_TYPES = (
+        ('Vegan', 'Vegan'),
+        ('Dessert', 'Dessert'),
+         ('Quick', 'Quick'),
+        ('Dinner', 'Dinner'),
+        ('Soup', 'Soup'),
+        ('Salad', 'Salad'),
+    )
+    category = models.CharField(max_length=10, choices=CATEGORY_TYPES, blank = False, help_text="Please enter the category of your recipe. It will be displayed on All recipes page")
 
     def publish(self):
         self.published_date = timezone.now()
