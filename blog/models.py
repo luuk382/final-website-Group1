@@ -29,7 +29,7 @@ class Post(models.Model):
         ('Soup', 'Soup'),
         ('Salad', 'Salad'),
     )
-    category = models.CharField(max_length=10, choices=CATEGORY_TYPES, blank = False, help_text="Please enter the category of your recipe. It will be displayed on All recipes page")
+    category = models.CharField(max_length=10, choices=CATEGORY_TYPES, blank = False, null=True, help_text="Please enter the category of your recipe. It will be displayed on All recipes page.")
 
     def publish(self):
         self.published_date = timezone.now()
