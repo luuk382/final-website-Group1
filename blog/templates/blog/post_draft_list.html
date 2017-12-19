@@ -2,10 +2,14 @@
 
 {% block unpublishedcontent %}
     {% for post in posts %}
+        {% if post.author == request.user %}
+        <section>
         <div class="post">
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p class="date"> {{ post.created_date|date:'F d, Y' }}</p>
             <p>{{ post.text|truncatechars:200 }}</p>
         </div>
+    </section>
+        {% endif %}
     {% endfor %}
 {% endblock %}
