@@ -69,15 +69,17 @@ h1, h2, h3, h4 {
 
 .dropdown-item {
   font-size: 70%;
-    font-weight: 400;
+  font-weight: 400;
    
-    letter-spacing: 0.5px;
-    color: rgb(128, 120, 120);
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.5px;
+  color: rgb(128, 120, 120);
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
   .dropdown-item.active,
-  .dropdown-item:hover {
+  .dropdown-item:hover,
+  .dropdown-item:focus
+ {
     color: #74d647;
     background-color: transparent;
   }
@@ -241,7 +243,7 @@ body {
   #addNewPost {
      padding-top: 70px;
      padding-bottom: 30px;
-     margin-bottom: 5px;
+     margin-bottom: 20px;
      
   }
   
@@ -683,3 +685,9 @@ body {
     background-color: #74d647;
   }
   
+
+
+
+
+
+

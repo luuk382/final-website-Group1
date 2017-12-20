@@ -1,10 +1,17 @@
 {% extends 'blog/base.html' %}
 
-{% block unpublishedcontent %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default btn-primary">Save</button>
-    </form>
-    
+
+{% block editPost %}
+<div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                    <h1>New post</h1>
+                    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="save btn btn-default btn-primary">Save</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

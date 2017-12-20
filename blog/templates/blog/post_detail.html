@@ -1,59 +1,68 @@
-{% extends 'blog/base.html' %} 
-{% block publishedcontent %}
-<div class="post">
-    <h1>{{ post.title }}</h1>
+{% extends 'blog/base.html' %} {% block postDetail %}
+<!-- Portfolio Recipes Grid -->
+<section id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="post">
+                <h1>{{ post.title }}</h1>
 
-    {% if post.published_date %}
-    <div class="date" id = "datePost">
-        {{ post.published_date|date:'F d, Y'}}
-        <span>by</span>
-        <span class="author-date">{{post.author}}</span>
+                {% if post.published_date %}
+                <div class="date" id="datePost">
+                    {{ post.published_date|date:'F d, Y'}}
+                    <span>by</span>
+                    <span class="author-date">{{post.author}}</span>
+                </div>
+                {% else %}
+                <div class="date" id="datePost"> {{ post.created_date|date:'F d, Y' }}</div>
+                {% endif %} {% if user.is_authenticated %}
+                <div>
+                    <a class="btn btn-default btn-primary" href="{% url 'post_edit' pk=post.pk %}">
+                        <i class="fa fa-pencil-square-o "></i>
+                    </a>
+                    <a class="btn btn-default btn-primary" href="{% url 'post_remove' pk=post.pk %}">
+                        <i class="fa fa-times "></i>
+                    </a>
+                </div>
+                {% endif %} {% if post.image %}
+                <img src="{{post.image.url}}" /> {% endif %}
+
+                <div>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+                {% if not post.published_date %}
+                <a class="btn btn-default btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
-    {% else %}
-    <div class="date" id = "datePost"> {{ post.created_date|date:'F d, Y' }}</div>
-    {% endif %}
+</section>
 
-    {% if user.is_authenticated %}
-    <div>
-    <a class="btn btn-default btn-primary" href="{% url 'post_edit' pk=post.pk %}">
-        <i class="fa fa-pencil-square-o "></i>
-    </a>
-    <a class="btn btn-default btn-primary" href="{% url 'post_remove' pk=post.pk %}">
-        <i class="fa fa-times "></i>
-    </a>
+<section class="bg-light" id="portfolio">
+    <div class="container">
+        <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+
+        {% for comment in post.comments.all %} {% if user.is_authenticated or comment.approved_comment %}
+        <div class="comment">
+            <div class="date comment-date">
+                {{ comment.created_date|date:'F d, Y' }}
+                <span>at</span> {{ comment.created_date|date:'P' }}
+                <span>by</span>
+                <strong>{{ comment.author }}</strong> {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}">
+                    <span class="fa fa-times"></span>
+                </a>
+                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}">
+                    <span class="fa fa-check"></span>
+                </a>
+                {% endif %}
+            </div>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+        {% endif %} {% empty %}
+        <p>No comments here yet</p>
+        {% endfor %}
+
     </div>
-    {% endif %}
+</section>
 
-    {% if post.image %}
-    <img src="{{post.image.url}}" /> 
-    {% endif %}
-    
-   <div><p>{{ post.text|linebreaksbr }}</p></div>
-    {% if not post.published_date %}
-    <a class="btn btn-default btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-    {% endif %}
-</div>
-
-
-<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-
-{% for comment in post.comments.all %} 
-{% if user.is_authenticated or comment.approved_comment %}
-<div class="comment">
-    <div class="date comment-date">
-        {{ comment.created_date|date:'F d, Y' }} <span>at</span> {{ comment.created_date|date:'P' }} <span>by</span>  <strong>{{ comment.author }}</strong> {% if not comment.approved_comment %}
-        <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}">
-            <span class="fa fa-times"></span>
-        </a>
-        <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}">
-            <span class="fa fa-check"></span>
-        </a>
-        {% endif %}
-    </div>
-    <p>{{ comment.text|linebreaks }}</p>
-</div>
-{% endif %} 
-{% empty %}
-<p>No comments here yet</p>
-{% endfor %}
- {% endblock %}
+{% endblock %}

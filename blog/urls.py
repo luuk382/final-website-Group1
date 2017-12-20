@@ -5,6 +5,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.post_list, name='post_list'),
+    url(r'^categories/$', views.post_categories, name='post_categories'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^home/$', views.home, name='home'),
+     url(r'^categories/vegan/$', views.vegan, name='vegan'),
     url(r'^drafts/$', views.post_draft_list, name='post_draft_list'),
     url(r'^post/(?P<pk>\d+)/publish/$', views.post_publish, name='post_publish'),
     url(r'^post/(?P<pk>\d+)/remove/$', views.post_remove, name='post_remove'),

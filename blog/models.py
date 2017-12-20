@@ -58,3 +58,6 @@ class Comment(models.Model):
         return self.text
 
 
+
+
+

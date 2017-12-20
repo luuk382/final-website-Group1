@@ -4,6 +4,7 @@ from .models import Post, Comment
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm, CommentForm
 from django.contrib.auth.forms import UserCreationForm
+from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, authenticate
 
 
@@ -12,6 +13,21 @@ from django.contrib.auth import login, authenticate
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_categories(request):
+    return render(request, 'blog/post_categories.html')
+
+def home(request):
+    return render(request, 'blog/home.html')
+
+
+def about(request):
+    return render(request, 'blog/about.html')
+
+def vegan(request):
+    posts = Post.objects.filter(category="Vegan").order_by('published_date')
+    return render(request, 'blog/vegan.html', {'posts': posts})
+  
 
 # If there is a post, it's opened in post_detail.html or an error
 def post_detail(request, pk):
@@ -101,5 +117,4 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
-
 
