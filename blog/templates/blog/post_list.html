@@ -23,6 +23,9 @@
             </div>
           </div>
           <img class="img-fluid" src="static/01-thumbnail.jpg" alt="">
+          {% if post.image %}
+          <img src="{{post.image.url}}" /> {% endif %}
+
         </a>
         <div class="portfolio-caption">
           <h4>{{ post.title }}</h4>
