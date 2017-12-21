@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 import os
 from django.core.validators import MaxValueValidator, MinValueValidator
+from versatileimagefield.fields import VersatileImageField
 
 # Create your models here.
 class Post(models.Model):
@@ -9,7 +10,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200) #title can be the max of 200 characters 
     text = models.TextField()
     description = models.TextField(max_length=100, blank=False, null=True)
-    image = models.ImageField(upload_to='post_image', blank=True, null=True)
+    image = VersatileImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     DIFFICULTY_LEVELS = (

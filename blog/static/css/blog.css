@@ -468,6 +468,11 @@ body {
   #portfolio .portfolio-item .portfolio-link #dinner-portfolio-hover {
     background: rgba(75, 99, 235, 0.6);
   }
+
+  #portfolio .portfolio-item .portfolio-link #personal-portfolio-hover {
+    background: rgba(177, 177, 177, 0.6);
+  }
+
   #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
     opacity: 1;
   }

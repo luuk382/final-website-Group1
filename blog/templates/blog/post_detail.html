@@ -3,6 +3,7 @@
 <section id="portfolio">
     <div class="container">
         <div class="row">
+                <div class="col-lg-8 mx-auto">
             <div class="post">
                 <h1>{{ post.title }}</h1>
 
@@ -24,9 +25,9 @@
                     </a>
                 </div>
                 {% endif %} {% if post.image %}
-                <img src="{{post.image.url}}" /> {% endif %}
+                <img class = "img-fluid d-block mx-auto" src="{{post.image.url}}" /> {% endif %}
 
-                <div>
+                <div modal-body>
                     <p>{{ post.text|linebreaksbr }}</p>
                 </div>
                 {% if not post.published_date %}
@@ -34,11 +35,14 @@
                 {% endif %}
             </div>
         </div>
+        </div>
     </div>
 </section>
 
 <section class="bg-light" id="portfolio">
     <div class="container">
+            <div class="row">
+            <div class="col-lg-8 mx-auto">
         <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 
         {% for comment in post.comments.all %} {% if user.is_authenticated or comment.approved_comment %}
@@ -61,8 +65,10 @@
         {% endif %} {% empty %}
         <p>No comments here yet</p>
         {% endfor %}
-
+</div>
+    </div>
     </div>
 </section>
 
 {% endblock %}
+

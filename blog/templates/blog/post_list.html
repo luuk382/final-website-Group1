@@ -17,18 +17,19 @@
       {% for post in posts %} {% if post.author == request.user %}
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a class="portfolio-link" a href="{% url 'post_detail' pk=post.pk %}">
-          <div id="dessert-portfolio-hover" class="portfolio-hover">
+          <div id="personal-portfolio-hover" class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-cutlery fa-2x"></i>
             </div>
           </div>
-          <img class="img-fluid" src="static/01-thumbnail.jpg" alt="">
           {% if post.image %}
-          <img src="{{post.image.url}}" /> {% endif %}
-
+          <img class = "img-fluid" src="{{post.image.crop.800x600 }}" />
+           {% endif %}
         </a>
         <div class="portfolio-caption">
+        
           <h4>{{ post.title }}</h4>
+    
           <div class="date">
             {{ post.published_date|date:'F d, Y'}}
             <span>by</span>
@@ -57,7 +58,14 @@
           {% endif %}
         </div>
       </div>
-      {% endif%} {% endfor %}
+      {% endif%}
+      {% empty %}
+      <div class="col-lg-12 text-center">
+          <p class="section-heading text-uppercase">This page will be visile for all users</p>
+          <p class="section-heading text-uppercase">Your have not published any recipes yet</p>
+          <p class="section-subheading text-muted"> To publish the recipe press "Publish" under the chosen draft</p>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

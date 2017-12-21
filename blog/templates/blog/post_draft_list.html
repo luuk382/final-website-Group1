@@ -13,5 +13,16 @@
         </div>
    
         {% endif %}
+        {% empty %}
+       <section >
+                    <p class="section-heading text-uppercase">This page is only visible by you. </p>
+                    <p class="section-heading text-uppercase">You have not created any drafts yet </p>
+                    <p class="section-subheading text-muted"> Add a new draft by pressing + </p>
+                  </div>
+                </div>
+            
     {% endfor %}
 {% endblock %}
+
+
+

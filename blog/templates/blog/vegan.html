@@ -19,12 +19,15 @@
       {% for post in posts %} 
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a class="portfolio-link" a href="{% url 'post_detail' pk=post.pk %}">
-          <div id="dessert-portfolio-hover" class="portfolio-hover">
+          <div id="vegan-portfolio-hover" class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-cutlery fa-2x"></i>
             </div>
           </div>
-          <img class="img-fluid" src="../../static/01-thumbnail.jpg" alt="">
+          {% if post.image %}
+          <img class = "img-fluid" src="{{post.image.crop.800x600 }}" />
+           {% endif %}
+          
         </a>
         <div class="portfolio-caption">
           <h4>{{ post.title }}</h4>
