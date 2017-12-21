@@ -537,7 +537,7 @@ body {
   }
   #portfolio .portfolio-item .portfolio-caption h4 {
     margin: 0;
-    text-transform: none;
+    /*text-transform: none;*/
   }
   #portfolio .portfolio-item .portfolio-caption p {
     font-size: 14px;

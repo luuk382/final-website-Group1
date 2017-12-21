@@ -11,8 +11,7 @@
 
 
     <!-- Different titles for pages -->
-    {% block homeTitle %} {% endblock %} {% block allRecipesTitle %} {% endblock %} {% block postListTitle %} {% endblock %}
-
+    {% block title %} {% endblock %}
 
     <!-- Bootstrap core CSS -->
 
@@ -59,16 +58,16 @@
                             </a>
                             <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item nav-item" href="{% url 'post_categories' %}">All</a>
-                                <a class="dropdown-item nav-item" href="/">My posts</a>
+                                <a class="dropdown-item nav-item" href="{% url 'post_list' %}">My posts</a>
                                 <a class="dropdown-item nav-item" href="{% url 'post_draft_list' %}">My drafts</a>
                             </div>
                         </div>
                         {% else %}
-                        <a class="nav-link js-scroll-trigger" href="index.html#gallery">Recipes</a>
+                        <a class="nav-link js-scroll-trigger" href="{% url 'post_categories' %}">Recipes</a>
                         {% endif %}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/">Gallery</a>
+                        <a class="nav-link js-scroll-trigger" href="{% url 'gallery' %}">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{% url 'about' %}">About</a>
@@ -117,7 +116,8 @@
 
 
 
-    {% block carousel %} {% endblock %} {% block gallery %} {% endblock %}
+    {% block carousel %} {% endblock %} 
+     {% block gallery %} {% endblock %}
 
 
     {% block try%} {% endblock %}
@@ -127,8 +127,9 @@
     {% block postDetail %} {% endblock %}
     {% block editPost %} {% endblock %}
     {% block addComment %} {% endblock %}
-    {% block vegan %} {% endblock %}
+    {% block category %} {% endblock %}
     {% block userLogin %}{% endblock %}
+    
 
 
     {% block about %} {% endblock %} 

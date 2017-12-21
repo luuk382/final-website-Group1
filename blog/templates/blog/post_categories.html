@@ -1,6 +1,6 @@
-{% extends 'blog/base.html' %} {% block allRecipesTitle %}
-<title> All Recipes</title>
-{% endblock %}
+{% extends 'blog/base.html' %} 
+
+{% block title %}<title>All Recipes </title> {% endblock %}
 
 
 
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="dessert.html">
+        <a class="portfolio-link" href="{% url 'dessert' %}">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-leaf fa-2x"></i>
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="quick.html">
+        <a class="portfolio-link" href="{% url 'quick' %}">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-leaf fa-2x"></i>
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="dinner.html">
+        <a class="portfolio-link" href="{% url 'dinner' %}">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-leaf fa-2x"></i>
@@ -65,11 +65,11 @@
           <img class="img-fluid" src="../static/img/portfolio/04-thumbnail.jpg" alt="">
         </a>
         <div class="portfolio-caption">
-          <h4>Dinner-Party</h4>
+          <h4>Dinner</h4>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="soup.html">
+        <a class="portfolio-link" href="{% url 'soup' %}">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-leaf fa-2x"></i>
@@ -82,7 +82,7 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="salad.html">
+        <a class="portfolio-link" href="{% url 'salad' %}">
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="fa fa-leaf fa-2x"></i>

@@ -24,9 +24,32 @@ def home(request):
 def about(request):
     return render(request, 'blog/about.html')
 
+def gallery(request):
+    return render(request, 'blog/gallery.html')
+
 def vegan(request):
     posts = Post.objects.filter(category="Vegan").order_by('published_date')
     return render(request, 'blog/vegan.html', {'posts': posts})
+
+def dessert(request):
+    posts = Post.objects.filter(category="Dessert").order_by('published_date')
+    return render(request, 'blog/dessert.html', {'posts': posts})
+
+def quick(request):
+    posts = Post.objects.filter(category="Quick").order_by('published_date')
+    return render(request, 'blog/quick.html', {'posts': posts})
+
+def dinner(request):
+    posts = Post.objects.filter(category="Dinner").order_by('published_date')
+    return render(request, 'blog/dinner.html', {'posts': posts})
+
+def soup(request):
+    posts = Post.objects.filter(category="Soup").order_by('published_date')
+    return render(request, 'blog/soup.html', {'posts': posts})
+
+def salad(request):
+    posts = Post.objects.filter(category="Salad").order_by('published_date')
+    return render(request, 'blog/salad.html', {'posts': posts})
   
 
 # If there is a post, it's opened in post_detail.html or an error

@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% block title %}<title>Draft List</title> {% endblock %}
 {% block unpublishedcontent %}
     {% for post in posts %}
         {% if post.author == request.user %}
