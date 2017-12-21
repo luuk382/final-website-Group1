@@ -44,6 +44,32 @@ class Post(models.Model):
     def approved_comments(self):
         return self.comments.filter(approved_comment=True)
 
+
+
+class Ingredient(models.Model):
+    title = models.CharField(max_length=200)
+    quantity = models.CharField(max_length=10)
+    MEASUREMENT_UNITS = (
+        ('tbsp', 'tbsp'),
+        ('tsp', 'tsp'),
+        ('g', 'g'),
+        ('kg', 'kg'),
+        ('tsp', 'tsp'),
+        ('ml', 'ml'),
+         ('l', 'l'),
+    )
+    measurement = models.CharField(max_length=200, choices=MEASUREMENT_UNITS, blank=True, null=True)
+    post = models.ForeignKey('blog.Post', related_name='ingredients')
+
+    def publish(self):
+        self.save()
+
+
+    def __str__(self):
+        return self.title
+ 
+   
+
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
     author = models.CharField(max_length=200)

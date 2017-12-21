@@ -25,9 +25,10 @@
                     </a>
                 </div>
                 {% endif %} {% if post.image %}
-                <img class = "img-fluid d-block mx-auto" src="{{post.image.url}}" /> {% endif %}
+                <img class = "img-fluid d-block mx-auto" src="{{post.image.url}}" /> <br> {% endif %}
 
                 <div modal-body>
+                    <h2>Instructions</h2>
                     <p>{{ post.text|linebreaksbr }}</p>
                 </div>
                 {% if not post.published_date %}
