@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post, Comment, Ingredient
+from .models import Post, Comment
 
 class PostForm(forms.ModelForm):
 
@@ -14,9 +14,10 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('author', 'text',)
 
-
+"""
 class IngredientForm(forms.ModelForm):
 
     class Meta:
         model = Ingredient
         fields = ('quantity', 'measurement', 'title',)
+"""

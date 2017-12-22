@@ -9,7 +9,7 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200) #title can be the max of 200 characters 
     text = models.TextField()
-    description = models.TextField(max_length=100, blank=False, null=True)
+    description = models.TextField(max_length=150, blank=False, null=True)
     image = VersatileImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -45,7 +45,7 @@ class Post(models.Model):
         return self.comments.filter(approved_comment=True)
 
 
-
+"""
 class Ingredient(models.Model):
     title = models.CharField(max_length=200)
     quantity = models.CharField(max_length=10)
@@ -68,7 +68,7 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.title
  
-   
+""" 
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')

@@ -63,7 +63,7 @@ h1, h2, h3, h4 {
 
 
 .comment {
-    margin: 20px 0px 20px 20px;
+    margin-top: 40px;
 }
 
 
@@ -690,8 +690,9 @@ body {
     background-color: #74d647;
   }
   
+  #btn-comment-approve {
+color:#585d61
+  }
 
 
-
-
-  
+      

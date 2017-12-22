@@ -1,27 +1,26 @@
 {% extends "blog/base.html" %}
 {% block title %}<title>Sign Up</title> {% endblock %}
-{% block publishedcontent %}
-<h2>Sign up</h2>
-<form method="post">
-
-  {% csrf_token %}
-  
-  {% for field in form %}
-  <p>
-    {{ field.label_tag }}
-    <br> {{ field }}
-  
-    {% if field.help_text %}
-    <small style="color: grey"><p>{{ field.help_text }}</p></small>
-    {% endif %} 
-
-    {% for error in field.errors %}
-    <p style="color: red"><p>{{ error }}</p></p>
+{% block userSignup %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+<form method="post" action="{% url 'signup' %}">
+{% csrf_token %}
+        <h1>Sign Up</h1><br>
+        {% for field in form %}
+        <p>
+          {{ field.label_tag }} 
+          <br>
+          {{ field }}
+          {% for error in field.errors %}
+    <p style="color: red"><p class = "error">{{ error }}</p></p>
     {% endfor %}
-  </p>
-  {% endfor %}
-  
-  <button type="submit" class = btn-primary>Sign up</button>
-
+          {% endfor %} <br><br>
+    <input type="submit" class = " btn btn-primary" value="SIGN UP" />
+    <input type="hidden" name="next" value="{{ next }}" />
 </form>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -34,8 +34,12 @@
             <span class="author-date">{{post.author}}</span>
             <span>
               <a href="{% url 'post_detail' pk=post.pk %}">
-
-                Comments: {{ post.approved_comments.count }}</a>
+                {% if post.author == request.user %}
+                Comments: {{ post.comments.count }}
+                {% else %}
+                 Comments: {{ post.approved_comments.count }}
+                {% endif%}
+              </a>
 
             </span>
           </div>
@@ -57,12 +61,7 @@
         </div>
       </div>
       {% endif%}
-      {% empty %}
-      <div class="col-lg-12 text-center">
-          <p class="section-heading text-uppercase">This page will be visile for all users</p>
-          <p class="section-heading text-uppercase">Your have not published any recipes yet</p>
-          <p class="section-subheading text-muted"> To publish the recipe press "Publish" under the chosen draft</p>
-      </div>
+    
       {% endfor %}
     </div>
   </div>

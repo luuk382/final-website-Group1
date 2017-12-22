@@ -6,6 +6,7 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.forms import UserCreationForm
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, authenticate
+from django.db.models.functions import Cast
 
 
 
@@ -37,6 +38,7 @@ def dessert(request):
 
 def quick(request):
     posts = Post.objects.filter(category="Quick").order_by('published_date')
+  
     return render(request, 'blog/quick.html', {'posts': posts})
 
 def dinner(request):
@@ -142,3 +144,7 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+
+ 

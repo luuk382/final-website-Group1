@@ -3,7 +3,7 @@
 
 {% block postDetail %}
 <!-- Portfolio Recipes Grid -->
-<section id="portfolio">
+
     <div class="container">
         <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -41,38 +41,42 @@
         </div>
         </div>
     </div>
-</section>
 
-<section class="bg-light" id="portfolio">
+
+
     <div class="container">
             <div class="row">
             <div class="col-lg-8 mx-auto">
-        <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-
-        {% for comment in post.comments.all %} {% if user.is_authenticated or comment.approved_comment %}
+                <h2>Comments</h2>
+        {% for comment in post.comments.all %} {% if post.author == request.user or comment.approved_comment %}
         <div class="comment">
             <div class="date comment-date">
+                    <strong>{{ comment.author }}</strong> <span>says</span><br>
                 {{ comment.created_date|date:'F d, Y' }}
                 <span>at</span> {{ comment.created_date|date:'P' }}
                 <span>by</span>
-                <strong>{{ comment.author }}</strong> {% if not comment.approved_comment %}
-                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}">
+                {% if not comment.approved_comment %}
+                <div class="save">
+                <a class="btn btn-default btn-comment-approve" id = "btn-comment-approve" href="{% url 'comment_remove' pk=comment.pk %}">
                     <span class="fa fa-times"></span>
                 </a>
-                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}">
+                <a class="btn btn-default" id = "btn-comment-approve" href="{% url 'comment_approve' pk=comment.pk %}">
                     <span class="fa fa-check"></span>
                 </a>
+            </div>
                 {% endif %}
             </div>
             <p>{{ comment.text|linebreaks }}</p>
+            <hr>
         </div>
         {% endif %} {% empty %}
         <p>No comments here yet</p>
-        {% endfor %}
+        {% endfor %} <br>
+        <a class=" save btn btn-default btn-primary" id = "btn-comment-add" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 </div>
     </div>
     </div>
-</section>
+
 
 {% endblock %}
 

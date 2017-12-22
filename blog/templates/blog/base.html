@@ -6,15 +6,13 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
 
 
     <!-- Different titles for pages -->
     {% block title %} {% endblock %}
 
     <!-- Bootstrap core CSS -->
-
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 
     <!-- Icons -->
@@ -53,7 +51,7 @@
                     <li class="nav-item">
                         {% if user.is_authenticated %}
                         <div class="dropdown">
-                            <a class="nav-link js-scroll-trigger dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                                 Recipes
                             </a>
                             <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuButton">
@@ -86,18 +84,17 @@
                     {% endif %}
                 </ul>
             </div>
-
         </div>
     </nav>
 
     <section id="addNewPost">
-            <hr> 
+        <hr>
         <div>
             {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu">
                 <i class="fa fa-plus"></i>
             </a>
-            
+
             <a href="{% url 'post_draft_list' %}" class="top-menu">
                 <i class="fa fa-pencil-square-o"></i>
             </a>
@@ -106,33 +103,29 @@
     </section>
 
 
-        <div class="content container">
-                <div class="row">
-                    <div class="col-md-8">
-                        {% block unpublishedcontent %} {% endblock %}
-                    </div>
-                </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block unpublishedcontent %} {% endblock %}
             </div>
+        </div>
+    </div>
 
 
-
-    {% block carousel %} {% endblock %} 
-     {% block gallery %} {% endblock %}
-
-
-    {% block try%} {% endblock %}
-    {% block allPostCategories %} {% endblock %}
-    {% block userPosts %} {% endblock %}
-    {% block userDrafts %} {% endblock %}
-    {% block postDetail %} {% endblock %}
+<!--Different blogs for clarity (note: the same can be used)-->
+    {% block carousel %} {% endblock %}
+    {% block gallery %} {% endblock %} 
+    {% block try%} {% endblock %} 
+    {% block allPostCategories%} {% endblock %} 
+    {% block userPosts %} {% endblock %} 
+    {% block userDrafts %} {% endblock %} 
+    {% block postDetail %} {% endblock %} 
     {% block editPost %} {% endblock %}
-    {% block addComment %} {% endblock %}
-    {% block category %} {% endblock %}
+    {% block addComment %} {% endblock %} 
+    {% block category %} {% endblock %} 
     {% block userLogin %}{% endblock %}
-    
-
-
-    {% block about %} {% endblock %} 
+    {% block userSignup %}{% endblock %}
+    {% block about %} {% endblock %}
 
 
     <!-- Footer -->
@@ -145,17 +138,17 @@
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
                         <li class="list-inline-item">
-                            <a href="">
+                            <a href="#">
                                 <i class="fa fa-pinterest"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="">
+                            <a href="#">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="">
+                            <a href="#">
                                 <i class="fa fa-instagram"></i>
                             </a>
                         </li>
@@ -177,10 +170,11 @@
 
 
 
+
     <!-- JS file for the gallery -->
     <script src="{% static 'js/blueimp-gallery.min.js' %}"></script>
-    <!-- Bootstrap core JavaScript -->
 
+    <!-- Bootstrap core JavaScript -->
     <script src="{% static 'jquery/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
@@ -189,7 +183,6 @@
 
     <!-- JS file for this project -->
     <script src="{% static 'js/main.js' %}"></script>
-
 
 
 </body>
