@@ -73,6 +73,7 @@ class Ingredient(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
     author = models.CharField(max_length=200)
+    author_user = models.ForeignKey('auth.User',  blank=False, null=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)

@@ -48,7 +48,8 @@
             <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2>Comments</h2>
-        {% for comment in post.comments.all %} {% if post.author == request.user or comment.approved_comment %}
+        {% for comment in post.comments.all %} 
+        {% if post.author == request.user or comment.author_user == request.user or comment.approved_comment %}
         <div class="comment">
             <div class="date comment-date">
                     <strong>{{ comment.author }}</strong> <span>says</span><br>
@@ -60,9 +61,11 @@
                 <a class="btn btn-default btn-comment-approve" id = "btn-comment-approve" href="{% url 'comment_remove' pk=comment.pk %}">
                     <span class="fa fa-times"></span>
                 </a>
+                {% if not comment.author_user == request.user %}
                 <a class="btn btn-default" id = "btn-comment-approve" href="{% url 'comment_approve' pk=comment.pk %}">
                     <span class="fa fa-check"></span>
                 </a>
+                {% endif %}
             </div>
                 {% endif %}
             </div>

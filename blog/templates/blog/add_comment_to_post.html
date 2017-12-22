@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <h1>New comment</h1>
             <form method="POST" class="post-form">{% csrf_token %} {{ form.as_p }}
-                <p>You will see the comment under the post as soon as it is approved by the recipe's author.</p>
+                <p>The comment will appear under the post for all users as soon as it is approved by the recipe's author.</p>
                 <button type="submit" class="save btn btn-default btn-primary">Send</button>
             </form>
         </div>
