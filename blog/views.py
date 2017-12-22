@@ -8,7 +8,10 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, authenticate
 from django.db.models.functions import Cast
 
-
+from rest_framework.views import APIView 
+from rest_framework.response import Response 
+from rest_framework import status
+from .serializers import PostSerializer, CommentSerializer  
 
 # Will only show published posts
 def post_list(request):
@@ -145,6 +148,29 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+
+
+class PostList(APIView):
+    def get(self, request): # For GET requests
+        posts = Post.objects.all().order_by('published_date')
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data)
+
+
+    def post(self): # For POST requests
+        pass
+
+
+
+class CommentList(APIView):
+    def get(self, request): # For GET requests
+        comments = Comment.objects.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+
+    def post(self): # For POST requests
+        pass
 
 
  

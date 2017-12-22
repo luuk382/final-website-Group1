@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'blog',
     'home',
     'versatileimagefield',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
