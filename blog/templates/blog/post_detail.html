@@ -72,10 +72,17 @@
             <p>{{ comment.text|linebreaks }}</p>
             <hr>
         </div>
-        {% endif %} {% empty %}
+        {% endif %}
+        
+        
+        
+        {% empty %}
         <p>No comments here yet</p>
         {% endfor %} <br>
+        {% if user.is_authenticated %}
         <a class=" save btn btn-default btn-primary" id = "btn-comment-add" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+        
+        {% endif %}
 </div>
     </div>
     </div>
