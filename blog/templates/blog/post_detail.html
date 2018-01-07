@@ -18,7 +18,7 @@
                 </div>
                 {% else %}
                 <div class="date" id="datePost"> {{ post.created_date|date:'F d, Y' }}</div>
-                {% endif %} {% if user.is_authenticated %}
+                {% endif %} {% if user.is_authenticated and post.author == request.user %}
                 <div>
                     <a class="btn btn-default btn-primary" href="{% url 'post_edit' pk=post.pk %}">
                         <i class="fa fa-pencil-square-o "></i>
@@ -48,7 +48,7 @@
             <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2>Comments</h2>
-        {% for comment in post.comments.all %} 
+        {% for comment in post.comments.all %}
         {% if post.author == request.user or comment.author_user == request.user or comment.approved_comment %}
         <div class="comment">
             <div class="date comment-date">
@@ -73,15 +73,15 @@
             <hr>
         </div>
         {% endif %}
-        
-        
-        
+
+
+
         {% empty %}
         <p>No comments here yet</p>
         {% endfor %} <br>
         {% if user.is_authenticated %}
         <a class=" save btn btn-default btn-primary" id = "btn-comment-add" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-        
+
         {% endif %}
 </div>
     </div>
@@ -89,4 +89,3 @@
 
 
 {% endblock %}
-
