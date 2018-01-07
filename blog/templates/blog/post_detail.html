@@ -18,7 +18,7 @@
                 </div>
                 {% else %}
                 <div class="date" id="datePost"> {{ post.created_date|date:'F d, Y' }}</div>
-                {% endif %} {% if user.is_authenticated %}
+                {% endif %} {% if user.is_authenticated and post.author == request.user %}
                 <div>
                     <a class="btn btn-default btn-primary" href="{% url 'post_edit' pk=post.pk %}">
                         <i class="fa fa-pencil-square-o "></i>
