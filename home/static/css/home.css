@@ -4,22 +4,22 @@ body {
     font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-family: "Karla", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   p {
     line-height: 1.75;
   }
-  
+
   a {
     color: #74d647;
   }
   a:hover {
     color: #74d647;
   }
-  
+
   .text-primary {
     color: #74d647 !important;
   }
-  
+
   h1,
   h2,
   h3,
@@ -29,7 +29,7 @@ body {
     font-weight: 400;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   section {
     padding: 100px 0;
   }
@@ -46,28 +46,28 @@ body {
     text-transform: none;
     font-family: "Karla", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   @media (min-width: 768px) {
     section {
-      padding: 150px 0;
+      padding: 0px 0;
     }
   }
-  
+
   .btn {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
   }
-  
+
   .btn-xl {
     font-size: 18px;
     padding: 20px 40px;
   }
-  
+
   .btn-primary {
     background-color: #d4ccb2;
     border-color: #d4ccb2;
   }
-  
+
   .btn-primary:active,
   .btn-primary:focus,
   .btn-primary:hover {
@@ -79,29 +79,29 @@ body {
   .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
   }
-  
+
   ::-moz-selection {
     background: #fed136;
     text-shadow: none;
   }
-  
+
   ::selection {
     background: #fed136;
     text-shadow: none;
   }
-  
+
   img::selection {
     background: transparent;
   }
-  
+
   img::-moz-selection {
     background: transparent;
   }
-  
+
   body {
     -webkit-tap-highlight-color: #74d647;
   }
-  
+
   #mainNav {
     background-color: white;
   }
@@ -137,7 +137,7 @@ body {
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #74d647;
   }
-  
+
   @media (min-width: 992px) {
     #mainNav {
       padding-top: 25px;
@@ -167,12 +167,12 @@ body {
       padding: 12px 0;
     }
   }
-  
+
   .carousel-inner {
     max-height: 200px;
     width: 100%;
   }
-  
+
   /*
   header.masthead {
     text-align: center;
@@ -225,14 +225,14 @@ body {
       font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
   }
-  
+
   @media (min-width: 992px) {
     .carousel-inner {
       max-height: 700px !important;
       width: 100% !important;
     }
   }
-  
+
   #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
@@ -323,7 +323,7 @@ body {
       sans-serif;
     float: left;
   }
-  
+
   #portfolio .portfolio-item .difficulty {
     font-family: "Karla", "Droid Serif", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
@@ -343,29 +343,29 @@ body {
     font-family: "Karla", "Droid Serif", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
   }
-  
+
   .gallery-item-odd {
     height: 450px;
     width: 350px;
   }
-  
+
   @media (min-width: 767px) {
     .gallery-item-odd {
       max-height: 400px;
       max-width: 300px;
     }
   }
-  
+
   #portfolio * {
     z-index: 2;
   }
-  
+
   @media (min-width: 767px) {
     #portfolio .portfolio-item {
       margin: 0 0 30px;
     }
   }
-  
+
   .portfolio-modal {
     padding-right: 0px !important;
   }
@@ -389,7 +389,7 @@ body {
     text-transform: uppercase;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   .portfolio-modal .modal-content p.item-intro {
     font-size: 16px;
     font-style: italic;
@@ -442,7 +442,7 @@ body {
     transform: rotate(90deg);
     background-color: #212529;
   }
-  
+
   footer {
     padding: 25px 0;
     text-align: center;
@@ -460,7 +460,7 @@ body {
     text-transform: none;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   ul.social-buttons {
     margin-bottom: 0;
   }
@@ -483,4 +483,3 @@ body {
   ul.social-buttons li a:hover {
     background-color: #74d647;
   }
-  
