@@ -1,0 +1,22 @@
+<div class="ingredient-input">
+    <table id="ingredient-table">
+        <tr>
+            <td class="amount-td">
+                <input id="ingr-amount" type="number" value="0">
+            </td>
+            <td>
+                <select id="ingr-unit">
+                    {% for unit in test_var %}
+                    <option value="{{unit}}">{{unit}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <input id="ingr-description" type="text" placeholder="description" value="">
+            </td>
+            <td>
+                <div id="button-plus"></div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -8,7 +8,6 @@ from versatileimagefield.fields import VersatileImageField
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200) #title can be the max of 200 characters
-    text = models.TextField()
     description = models.TextField(max_length=150, blank=False, help_text="Short summary for All recipes page", null=True, )
     image = VersatileImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
@@ -66,6 +65,18 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Step(models.Model):
+    description = models.CharField(max_length=300)
+    step_number = models.IntegerField()
+    post = models.ForeignKey('blog.Post', related_name='steps')
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.description
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
