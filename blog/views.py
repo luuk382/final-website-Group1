@@ -69,18 +69,27 @@ def post_detail(request, pk):
 @login_required
 def post_new(request):
     measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
-    ingredients = {}
 
     if request.method == "POST":
-        for key in request.POST:
-            ingredients.update(json.loads(request.POST[key]))
 
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            print(ingredients)
+
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+
+            ingredients = json.loads(request.POST['ingredients'])
+
+            for ingredient in ingredients.values():
+                if ingredient != "":
+                    i = Ingredient()
+                    i.title = ingredient["description"]
+                    i.quantity = ingredient["amount"]
+                    i.measurement = ingredient["unit"]
+                    i.post = post
+                    i.save()
+
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
@@ -94,7 +103,6 @@ def post_new(request):
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    print("iHOASD")
     if request.method == "POST":
         form = PostForm(request.POST,  request.FILES, instance=post)
         if form.is_valid():
