@@ -54,6 +54,7 @@ class Ingredient(models.Model):
         ('kg', 'kg'),
         ('tsp', 'tsp'),
         ('ml', 'ml'),
+        ('piece', 'piece'),
         ('l', 'l'),
     )
     measurement = models.CharField(max_length=200, choices=MEASUREMENT_UNITS, blank=True, null=True)

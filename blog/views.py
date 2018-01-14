@@ -11,10 +11,10 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, authenticate
 from django.db.models.functions import Cast
 
-from rest_framework.views import APIView 
-from rest_framework.response import Response 
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework import status
-from .serializers import PostSerializer, CommentSerializer  
+from .serializers import PostSerializer, CommentSerializer
 
 # Will only show published posts
 def post_list(request):
@@ -44,7 +44,7 @@ def dessert(request):
 
 def quick(request):
     posts = Post.objects.filter(category="Quick").order_by('published_date')
-  
+
     return render(request, 'blog/quick.html', {'posts': posts})
 
 def dinner(request):
@@ -58,7 +58,7 @@ def soup(request):
 def salad(request):
     posts = Post.objects.filter(category="Salad").order_by('published_date')
     return render(request, 'blog/salad.html', {'posts': posts})
-  
+
 
 # If there is a post, it's opened in post_detail.html or an error
 def post_detail(request, pk):
@@ -80,6 +80,7 @@ def post_new(request):
             post.save()
 
             ingredients = json.loads(request.POST['ingredients'])
+            steps = json.loads(request.POST['steps'])
 
             for ingredient in ingredients.values():
                 if ingredient != "":
@@ -89,6 +90,13 @@ def post_new(request):
                     i.measurement = ingredient["unit"]
                     i.post = post
                     i.save()
+
+            for number, step in enumerate(steps):
+                s = Step()
+                s.step_number = number + 1
+                s.description = step
+                s.post = post
+                s.save()
 
             return redirect('post_detail', pk=post.pk)
     else:

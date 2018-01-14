@@ -3,7 +3,7 @@
 
 {% load static %}
 
-{% block script %} 
+{% block script %}
     <script src="{% static 'js/add_post_logic.js' %}"></script>
 {% endblock %}
 
@@ -20,6 +20,7 @@
 
                     {% if field.name == "image"  %}
                         {% include "blog/ingredient_input.html" with test_var=test_var %}
+                        {% include "blog/steps_input.html" %}
                     {% endif %}
 
                     <div class="fieldWrapper">
