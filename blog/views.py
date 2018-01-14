@@ -119,6 +119,25 @@ def post_edit(request, pk):
             post.author = request.user
             post.save()
 
+            ingredients = json.loads(request.POST['ingredients'])
+            steps = json.loads(request.POST['steps'])
+
+            for ingredient in ingredients.values():
+                if ingredient != "":
+                    i = Ingredient()
+                    i.title = ingredient["description"]
+                    i.quantity = ingredient["amount"]
+                    i.measurement = ingredient["unit"]
+                    i.post = post
+                    i.save()
+
+            for number, step in enumerate(steps):
+                s = Step()
+                s.step_number = number + 1
+                s.description = step
+                s.post = post
+                s.save()
+
             
             return redirect('post_detail', pk=post.pk)
     else:
