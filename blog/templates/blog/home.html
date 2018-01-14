@@ -3,9 +3,9 @@
 
 
     {% block  title %}  <title>Vegetarian Recipe Book</title> {% endblock %}
-   
 
-    
+
+
 
 <body id="page-top">
     <!-- Navigation Bar-->
@@ -41,7 +41,7 @@
     {% block  carousel %}
     <!-- Carousel -->
     <header>
-        
+
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -67,7 +67,7 @@
                     <img class="d-block img-fluid" src="../static/img/carousel/4.jpg" alt="Fifth slide">
                 </div>
             </div>
-       
+
         </div>
     </header>
     {% endblock %}
@@ -88,8 +88,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Gallery</h2>
-                    <h3 class="section-subheading text-muted">Check out the gallery of our recipes</h3>
+                    <a href="{% url 'gallery' %}"><h2 class="section-heading text-uppercase">Gallery</h2></a>
+                    <h3 class="section-subheading text-muted">Check out the gallery for more recipes</h3>
                 </div>
             </div>
             <div id="links">
@@ -148,7 +148,7 @@
 
 
 
-    
+
 
     <!-- Bootstrap core JavaScript -->
 

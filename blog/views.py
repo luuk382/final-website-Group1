@@ -8,10 +8,10 @@ from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, authenticate
 from django.db.models.functions import Cast
 
-from rest_framework.views import APIView 
-from rest_framework.response import Response 
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework import status
-from .serializers import PostSerializer, CommentSerializer  
+from .serializers import PostSerializer, CommentSerializer
 
 # Will only show published posts
 def post_list(request):
@@ -29,7 +29,8 @@ def about(request):
     return render(request, 'blog/about.html')
 
 def gallery(request):
-    return render(request, 'blog/gallery.html')
+    recipes = Post.objects.all()#.order_by('-rating')
+    return render(request, 'blog/gallery.html', {'recipes': recipes})
 
 def vegan(request):
     posts = Post.objects.filter(category="Vegan").order_by('published_date')
@@ -41,7 +42,7 @@ def dessert(request):
 
 def quick(request):
     posts = Post.objects.filter(category="Quick").order_by('published_date')
-  
+
     return render(request, 'blog/quick.html', {'posts': posts})
 
 def dinner(request):
@@ -55,7 +56,7 @@ def soup(request):
 def salad(request):
     posts = Post.objects.filter(category="Salad").order_by('published_date')
     return render(request, 'blog/salad.html', {'posts': posts})
-  
+
 
 # If there is a post, it's opened in post_detail.html or an error
 def post_detail(request, pk):
@@ -172,6 +173,3 @@ class CommentList(APIView):
 
     def post(self): # For POST requests
         pass
-
-
- 

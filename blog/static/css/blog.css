@@ -49,8 +49,8 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
     float: right;
-    
-   
+
+
 }
 
 .post {
@@ -70,7 +70,7 @@ h1, h2, h3, h4 {
 .dropdown-item {
   font-size: 70%;
   font-weight: 400;
-   
+
   letter-spacing: 0.5px;
   color: rgb(128, 120, 120);
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -130,7 +130,7 @@ h1, h2, h3, h4 {
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #74d647;
   }
-  
+
   @media (min-width: 992px) {
     #mainNav {
       padding-top: 25px;
@@ -183,7 +183,7 @@ body {
     font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-family: "Karla", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   p {
     line-height: 1.75;
     font-weight: 400;
@@ -191,18 +191,18 @@ body {
     color: #424243;
     font-size: 14px;
   }
-  
+
   a {
     color: #74d647;
   }
   a:hover {
     color: #74d647;
   }
-  
+
   .text-primary {
     color: #74d647 !important;
   }
-  
+
   h1,
   h2,
   h3,
@@ -216,7 +216,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.2em;
   }
-  
+
   section {
     padding: 100px 0;
   }
@@ -233,7 +233,7 @@ body {
     text-transform: none;
     font-family: "Karla", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   @media (min-width: 768px) {
     section {
       padding: 150px 0;
@@ -244,26 +244,26 @@ body {
      padding-top: 70px;
      padding-bottom: 30px;
      margin-bottom: 20px;
-     
+
   }
-  
+
   .btn {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
   }
-  
+
   .btn-xl {
     font-size: 18px;
     padding: 20px 40px;
   }
-  
+
   .btn-primary {
     background-color: #b2c7ae;
     border-color: #b2c7ae;
     margin-bottom: 7px;
   }
 
-  
+
   .btn-primary:active,
   .btn-primary:focus,
   .btn-primary:hover {
@@ -275,29 +275,29 @@ body {
   .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem #74d647 !important;
   }
-  
+
   ::-moz-selection {
     background: #74d647;
     text-shadow: none;
   }
-  
+
   ::selection {
     background: #74d647;
     text-shadow: none;
   }
-  
+
   img::selection {
     background: transparent;
   }
-  
+
   img::-moz-selection {
     background: transparent;
   }
-  
+
   body {
     -webkit-tap-highlight-color: #74d647;
   }
-  
+
   #mainNav {
     background-color: white;
   }
@@ -333,7 +333,7 @@ body {
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #74d647;
   }
-  
+
   @media (min-width: 992px) {
     #mainNav {
       padding-top: 25px;
@@ -363,12 +363,12 @@ body {
       padding: 12px 0;
     }
   }
-  
+
   .carousel-inner {
     max-height: 200px;
     width: 100%;
   }
-  
+
   /*
   header.masthead {
     text-align: center;
@@ -421,14 +421,14 @@ body {
       font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
   }
-  
+
   @media (min-width: 992px) {
     .carousel-inner {
       max-height: 700px !important;
       width: 100% !important;
     }
   }
-  
+
   #portfolio .portfolio-item {
     right: 0;
     margin: 0 0 15px;
@@ -529,7 +529,7 @@ body {
       sans-serif;
     float: left;
   }
-  
+
   #portfolio .portfolio-item .difficulty {
     font-family: "Karla", "Droid Serif", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
@@ -549,29 +549,29 @@ body {
     font-family: "Karla", "Droid Serif", "Helvetica Neue", Helvetica, Arial,
       sans-serif;
   }
-  
+
   .gallery-item-odd {
     height: 450px;
     width: 350px;
   }
-  
+
   @media (min-width: 767px) {
     .gallery-item-odd {
       max-height: 400px;
       max-width: 300px;
     }
   }
-  
+
   #portfolio * {
     z-index: 2;
   }
-  
+
   @media (min-width: 767px) {
     #portfolio .portfolio-item {
       margin: 0 0 30px;
     }
   }
-  
+
   .portfolio-modal {
     padding-right: 0px !important;
   }
@@ -595,7 +595,7 @@ body {
     text-transform: uppercase;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   .portfolio-modal .modal-content p.item-intro {
     font-size: 16px;
     font-style: italic;
@@ -648,7 +648,7 @@ body {
     transform: rotate(90deg);
     background-color: #212529;
   }
-  
+
   footer {
     padding: 25px 0;
     text-align: center;
@@ -666,7 +666,7 @@ body {
     text-transform: none;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
-  
+
   ul.social-buttons {
     margin-bottom: 0;
   }
@@ -689,10 +689,56 @@ body {
   ul.social-buttons li a:hover {
     background-color: #74d647;
   }
-  
+
   #btn-comment-approve {
 color:#585d61
   }
 
+  .gallery-page {
+    padding-top: 100px;
+    margin-top: 10px;
+  }
 
-      
+  .portfolio {
+    padding-top: 100px;
+  }
+
+
+  .rating {
+    border: none;
+    float: left;
+  }
+
+  .rating > input { display: none; }
+  .rating > label:before {
+    margin: 1px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+  }
+
+  .rating > .half:before {
+    content: "\f089";
+    position: absolute;
+  }
+
+  .rating > label {
+    color: #ddd;
+   float: right;
+  }
+
+  /***** CSS Magic to Highlight Stars on Hover *****/
+
+  .rating > input:checked ~ label, /* show gold star when clicked */
+  .rating:not(:checked) > label:hover, /* hover current star */
+  .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+  .rating > input:checked + label:hover, /* hover current star when changing rating */
+  .rating > input:checked ~ label:hover,
+  .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+  .link {
+    color: black;
+  }

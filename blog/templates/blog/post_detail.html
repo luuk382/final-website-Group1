@@ -3,7 +3,7 @@
 
 {% block postDetail %}
 <!-- Portfolio Recipes Grid -->
-
+  <div class="portfolio">
     <div class="container">
         <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -23,7 +23,7 @@
                     <a class="btn btn-default btn-primary" href="{% url 'post_edit' pk=post.pk %}">
                         <i class="fa fa-pencil-square-o "></i>
                     </a>
-                    <a class="btn btn-default btn-primary" href="{% url 'post_remove' pk=post.pk %}">
+                    <a class="btn btn-default btn-primary" href="{% url 'post_remove' pk=post.pk %}" onclick="return confirm('Are you sure you want to delete this recipe?');">
                         <i class="fa fa-times "></i>
                     </a>
                 </div>
@@ -37,10 +37,29 @@
                 {% if not post.published_date %}
                 <a class="btn btn-default btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
                 {% endif %}
+                <h2> Rate </h2>
+                {% if user.is_authenticated %}
+                <fieldset class="rating" id="rating">
+                  <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                  <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Good - 4.5 stars"></label>
+                  <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                  <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                  <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Sufficient - 3 stars"></label>
+                  <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                  <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="bad - 2 stars"></label>
+                  <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Sucks small time - 1.5 stars"></label>
+                  <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks - 1 star"></label>
+                  <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+                {% else %}
+                  Please <a class="portfolio-link" href="{% url 'login' %}">login</a> to rate this recipe.
+                {% endif %}
             </div>
         </div>
         </div>
     </div>
+</div>
+
 
 
 
@@ -88,4 +107,7 @@
     </div>
 
 
+{% endblock %}
+{% block javascript %}
+<script src="{% static %}"></script>
 {% endblock %}
