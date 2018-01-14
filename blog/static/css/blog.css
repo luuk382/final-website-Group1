@@ -703,6 +703,53 @@ color:#585d61
     padding-top: 100px;
   }
 
+  .stars > span:before {
+    margin: 1px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+    color: #ddd;
+  }
+
+  .fullstar:before {
+    margin: 1px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+    color: #FFD700;
+  }
+
+  .emptystar:before {
+    margin: 1px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+    color: #ddd;
+  }
+
+  .halfstar:after {
+    margin: 1px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f089";
+    color: #FFD700;
+    position: aboslute;
+  }
+
+  button.stars {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+  }
+
+
 
   .rating {
     border: none;
@@ -738,7 +785,3 @@ color:#585d61
   .rating > input:checked ~ label:hover,
   .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
   .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
-
-  .link {
-    color: black;
-  }
