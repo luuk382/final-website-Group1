@@ -18,12 +18,13 @@
 
                     {% for field in form %}
 
-                    {% if field.name == "image"  %}
+                    {% if field.name == "instructions"  %}
                         {% include "blog/ingredient_input.html" with test_var=test_var %}
                         {% include "blog/steps_input.html" %}
                     {% endif %}
 
                     <div class="fieldWrapper">
+                        <br>
                         {{ field.errors }}
                         {{ field.label_tag }} {{ field }}
                         {% if field.help_text %}

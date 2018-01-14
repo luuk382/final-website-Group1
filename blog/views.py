@@ -110,6 +110,7 @@ def post_new(request):
 
 @login_required
 def post_edit(request, pk):
+    measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST,  request.FILES, instance=post)
@@ -117,10 +118,12 @@ def post_edit(request, pk):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+
+            
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request, 'blog/post_edit.html', {'form': form, 'test_var': measurement_units})
 
 
 @login_required
