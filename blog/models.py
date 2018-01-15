@@ -33,6 +33,9 @@ class Post(models.Model):
         ('Salad', 'Salad'),
     )
     category = models.CharField(max_length=10, choices=CATEGORY_TYPES, blank = False, null=True, help_text="Please enter the category of your recipe. It will be displayed on All recipes page.")
+    rating = models.IntegerField(default=0, editable=False)
+    voted = models.IntegerField(default=0, editable=False)
+    seen = models.BigIntegerField(default=0, editable=False)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -44,6 +47,59 @@ class Post(models.Model):
     def approved_comments(self):
         return self.comments.filter(approved_comment=True)
 
+    def increase(self):
+        x = int(self.seen)
+        x += 1
+        self.seen = x
+        self.save(update_fields=["seen"])
+        return self.seen
+
+    def vote(self):
+        x = int(self.voted)
+        x += 1
+        self.voted = x
+        self.save(update_fields=["voted"])
+        return self.rating
+
+    def rate1(self):
+        x = int(self.rating)
+        x += 1
+        x = int(round(x / 2))
+        self.rating = x
+        self.save(update_fields=["rating"])
+        return self.rating
+
+    def rate2(self):
+        x = int(self.rating)
+        x += 2
+        x = int(round(x / 2))
+        self.rating = x
+        self.save(update_fields=["rating"])
+        return self.rating
+
+    def rate3(self):
+        x = int(self.rating)
+        x += 3
+        x = int(round(x / 2))
+        self.rating = x
+        self.save(update_fields=["rating"])
+        return self.rating
+
+    def rate4(self):
+        x = int(self.rating)
+        x += 4
+        x = int(round(x / 2))
+        self.rating = x
+        self.save(update_fields=["rating"])
+        return self.rating
+
+    def rate5(self):
+        x = int(self.rating)
+        x += 5
+        x = int(round(x / 2))
+        self.rating = x
+        self.save(update_fields=["rating"])
+        return self.rating
 
 class Ingredient(models.Model):
     title = models.CharField(max_length=200)
@@ -67,7 +123,6 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Step(models.Model):
     description = models.CharField(max_length=300)

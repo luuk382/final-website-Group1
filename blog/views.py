@@ -32,7 +32,8 @@ def about(request):
     return render(request, 'blog/about.html')
 
 def gallery(request):
-    return render(request, 'blog/gallery.html')
+    recipes = Post.objects.all()#.order_by('-rating')
+    return render(request, 'blog/gallery.html', {'recipes': recipes})
 
 def vegan(request):
     posts = Post.objects.filter(category="Vegan").order_by('published_date')

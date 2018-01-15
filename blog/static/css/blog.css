@@ -79,7 +79,7 @@ h1, h2, h3, h4 {
 .dropdown-item.active,
 .dropdown-item:hover,
 .dropdown-item:focus
-{
+{   
     color: #74d647;
     background-color: transparent;
 }
@@ -129,9 +129,11 @@ h1, h2, h3, h4 {
 #mainNav .navbar-nav .nav-item .nav-link.active,
 #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #74d647;
+
 }
 
 @media (min-width: 992px) {
+
     #mainNav {
         padding-top: 25px;
         padding-bottom: 25px;
@@ -209,6 +211,7 @@ h3,
 h4,
 h5,
 h6 {
+
     font-weight: 400;
     font-family: "Karla, ""Droid Serif", "Helvetica Neue", Helvetica, Arial;
     color: #424243;
@@ -335,6 +338,7 @@ body {
 }
 
 @media (min-width: 992px) {
+
     #mainNav {
         padding-top: 25px;
         padding-bottom: 25px;
@@ -362,6 +366,7 @@ body {
         font-size: 1.25em;
         padding: 12px 0;
     }
+
 }
 
 .carousel-inner {

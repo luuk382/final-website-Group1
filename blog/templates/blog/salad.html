@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %} 
+{% extends 'blog/base.html' %}
 
 {% block title %}<title>Vegan Recipes</title> {% endblock %}
 
@@ -25,19 +25,19 @@
           {% if post.image %}
           <img class = "img-fluid" src="{{post.image.crop.800x600 }}" />
            {% endif %}
-          
+
         </a>
         <div class="portfolio-caption">
-          <h4>{{ post.title }}</h4>
+            <a class="portfolio-link" href="{%url 'post_detail' pk=post.pk %}"><h4>{{ post.title }}</h4></a>
           <div class="date">
             {{ post.published_date|date:'F d, Y'}}
             <span>by</span>
             <span class="author-date">{{post.author}}</span>
             <span>
               <a href="{% url 'post_detail' pk=post.pk %}">
-      
+
                 Comments: {{ post.approved_comments.count }}</a>
-      
+
             </span>
           </div>
           <p class="text-muted">{{post.description}}
@@ -62,5 +62,5 @@
       </div>
       </div>
       </section>
-      
+
 {% endblock %}

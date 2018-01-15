@@ -26,10 +26,11 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-    <!--Custom CSS-->
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
     <!--CSS for the Galery-->
     <link rel="stylesheet" href="{% static 'css/blueimp-gallery.min.css' %}">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 
 <body id="page-top">
@@ -56,6 +57,7 @@
                             <div class="dropdown-menu nav-item" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item nav-item" href="{% url 'post_categories' %}">All</a>
                                 <a class="dropdown-item nav-item" href="{% url 'post_list' %}">My posts</a>
+                                <a class="dropdown-item nav-item" href="{% url 'post_new' %}">New draft</a>
                                 <a class="dropdown-item nav-item" href="{% url 'post_draft_list' %}">My drafts</a>
                             </div>
                         </div>
@@ -86,7 +88,7 @@
         </div>
     </nav>
 
-    <section id="addNewPost">
+    <!--<section id="addNewPost">
         <hr>
         <div>
             {% if user.is_authenticated %}
@@ -99,7 +101,7 @@
             </a>
             {% endif %}
         </div>
-    </section>
+    </section> -->
 
 
     <div class="content container">
@@ -155,6 +157,7 @@
 
 
     <!-- JS file for the gallery -->
+    {% block javascipt %} {% endblock %}
     <script src="{% static 'js/blueimp-gallery.min.js' %}"></script>
 
     <!-- Bootstrap core JavaScript -->
