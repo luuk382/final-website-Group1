@@ -1,20 +1,25 @@
 import json
 
-from .models import Post, Comment, Ingredient, Step
-from .forms import PostForm, CommentForm
-
+from .models import Post, Comment, UserProfile, Friend, Ingredient, Step
+from .forms import (
+    PostForm, 
+    CommentForm, 
+    EditProfileForm,
+    ProfileForm
+    )
 from django.utils import timezone
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.db.models.functions import Cast
+from django.contrib.auth.models import User
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework.views import APIView 
+from rest_framework.response import Response 
 from rest_framework import status
-from .serializers import PostSerializer, CommentSerializer
+from .serializers import PostSerializer, CommentSerializer  
 
 # Will only show published posts
 def post_list(request):
@@ -32,8 +37,7 @@ def about(request):
     return render(request, 'blog/about.html')
 
 def gallery(request):
-    recipes = Post.objects.all()#.order_by('-rating')
-    return render(request, 'blog/gallery.html', {'recipes': recipes})
+    return render(request, 'blog/gallery.html')
 
 def vegan(request):
     posts = Post.objects.filter(category="Vegan").order_by('published_date')
@@ -45,7 +49,7 @@ def dessert(request):
 
 def quick(request):
     posts = Post.objects.filter(category="Quick").order_by('published_date')
-
+  
     return render(request, 'blog/quick.html', {'posts': posts})
 
 def dinner(request):
@@ -59,7 +63,7 @@ def soup(request):
 def salad(request):
     posts = Post.objects.filter(category="Salad").order_by('published_date')
     return render(request, 'blog/salad.html', {'posts': posts})
-
+  
 
 # If there is a post, it's opened in post_detail.html or an error
 def post_detail(request, pk):
@@ -67,6 +71,8 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post})
 
 # Means that login is required to edit these fields
+
+
 @login_required
 def post_new(request):
     measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
@@ -108,6 +114,73 @@ def post_new(request):
                 {'form': form, 'test_var': measurement_units}
             )
 
+
+
+@login_required
+def profile(request,pk):
+    profile = get_object_or_404(User, pk=pk)
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/profile.html', {'user': profile, 'posts': posts})
+
+@login_required
+def profile_settings(request, pk):
+    profile = get_object_or_404(User, pk=pk)
+    if request.method == "POST":
+        form = EditProfileForm(request.POST,  request.FILES, instance=profile)
+        #form = ProfileForm(request.POST,  request.FILES, instance=request.user)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.save()
+            return redirect('profile', pk=profile.pk)
+    else:
+        form = EditProfileForm(instance=profile)
+    return render(request, 'blog/profile_settings.html', {'form': form})
+
+@login_required
+def profile_edit(request, pk):
+    profile = get_object_or_404(UserProfile, pk=pk)
+    if request.method == "POST":
+        form = ProfileForm(request.POST,  request.FILES, instance=profile)
+        #form = ProfileForm(request.POST,  request.FILES, instance=request.user)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.save()
+            return redirect('profile', pk=profile.pk)
+    else:
+        form = ProfileForm(instance=profile)
+    return render(request, 'blog/profile_edit.html', {'form': form})
+
+def change_friend(request,operation,pk):
+    new_friend = User.objects.get(pk=pk)
+    if operation == 'add':
+        Friend.make_friend(request.user, new_friend )
+    elif operation == 'remove':
+        Friend.lose_friend(request.user, new_friend )
+    return redirect('about')
+
+@login_required
+def friends_list(request, pk):
+    users = User.objects.exclude(id = request.user.id)
+    friend = Friend.objects.get(current_user = request.user, pk=pk)
+    friends = friend.users.all()
+    return render(request, 'blog/friends.html', {'users': users, 'friends': friends})
+
+
+
+@login_required
+def password(request,pk):
+    password = get_object_or_404(User, pk=pk)
+    if request.method == "POST":
+        form = PasswordChangeForm(data=request.POST, user=password)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('profile', pk=profile.pk)
+        else: 
+            return redirect('password')
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request, 'blog/password_change.html', {'form': form})
 
 @login_required
 def post_edit(request, pk):
@@ -227,3 +300,6 @@ class CommentList(APIView):
 
     def post(self): # For POST requests
         pass
+
+
+ 

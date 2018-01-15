@@ -20,7 +20,7 @@
     $('.navbar-collapse').collapse('hide');
   });
 /*
-  //Make image bigger on hovering
+  //Make image bigger on hovering 
   $('.recipes-hover-content').on('mouseenter', (event) => {
     $(event.currentTarget).addClass('photo-active')
   }).on('mouseleave', event => {

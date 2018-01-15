@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %} {% block postDetail %}
+
+<!-- Portfolio Recipes Grid -->
+<section id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        {% if user.userprofile.profilePicture %}
+        <img class="img-fluid d-block mx-auto rounded-circle" src="{{user.userprofile.profilePicture.crop.400x300}}" />
+        {% endif %}
+        <br>
+        <h2 class="section-heading text-uppercase">{{user}}</h2>
+         <center>
+            {% if user.userprofile.birthDate %}
+            <span><strong>Age: </strong></span>
+            <span class="label label-warning">{{user.userprofile.age}} years old</span>
+            {% endif %}
+            {% if user.userprofile.height %}
+            <span><strong>Height: </strong></span>
+                <span class="label label-warning">{{user.userprofile.heighttInM}} m</span>
+            {% endif %}
+            {% if user.userprofile.weight %}
+            <span><strong>Weight: </strong></span>
+                <span class="label label-warning">{{user.userprofile.weight}} kg</span>
+            {% endif %}
+            {% if user.userprofile.weight and user.userprofile.height %}
+            <span><strong>BMI: </strong></span>
+                <span class="label label-warning">{{user.userprofile.bmi}}</span>
+            {% endif %}
+            </center><br>
+            <h3 class="section-subheading text-muted"> {{user.userprofile.description}} </h3>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
