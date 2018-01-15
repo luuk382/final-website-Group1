@@ -110,6 +110,7 @@ def post_new(request):
 
 @login_required
 def post_edit(request, pk):
+    ingredient = get_object_or_404(Ingredient, pk=pk)
     measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":

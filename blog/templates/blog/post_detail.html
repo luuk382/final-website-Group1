@@ -39,7 +39,12 @@
                     {% endfor %}
                     </ul>
                     <h2>Instructions</h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
+                    <ol>
+                            {% for step in post.steps.all %}
+                            <li> </i>{{step.description}}  </li>
+                            {% endfor %}
+                    </ol>
+                   
                    </ol>
                 </div>
                 {% if not post.published_date %}
