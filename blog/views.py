@@ -64,13 +64,7 @@ def salad(request):
 # If there is a post, it's opened in post_detail.html or an error
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    numbers = [0,1,2,3,4,5]
-    half_user = False
-    z = post.stars
-    half = True
-    goldenstar = 'xx'
-    greystar= 'xx'
-    return render(request, 'blog/post_detail.html', {'post': post, 'goldenstar': goldenstar, 'greystar': greystar, 'half': half})
+    return render(request, 'blog/post_detail.html', {'post': post})
 
 # Means that login is required to edit these fields
 @login_required
@@ -117,9 +111,9 @@ def post_new(request):
 
 @login_required
 def post_edit(request, pk):
-    ingredient = get_object_or_404(Ingredient, pk=pk)
-    measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
     post = get_object_or_404(Post, pk=pk)
+    ingredient = Ingredient.objects.filter(post = post) 
+    measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
     if request.method == "POST":
         form = PostForm(request.POST,  request.FILES, instance=post)
         if form.is_valid():
@@ -146,7 +140,7 @@ def post_edit(request, pk):
                 s.post = post
                 s.save()
 
-            
+
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)

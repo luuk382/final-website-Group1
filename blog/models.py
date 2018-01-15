@@ -10,7 +10,7 @@ class Post(models.Model):
     instructions = models.TextField(blank = True, null = True, default = '')
     title = models.CharField(max_length=200) #title can be the max of 200 characters
     description = models.TextField(max_length=150, blank=False, help_text="Short summary for All recipes page", null=True, )
-    image = VersatileImageField(upload_to='post_image', blank=True, null=True)
+    image = VersatileImageField(upload_to='post_image', blank=False, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     DIFFICULTY_LEVELS = (
@@ -27,14 +27,12 @@ class Post(models.Model):
     CATEGORY_TYPES = (
         ('Vegan', 'Vegan'),
         ('Dessert', 'Dessert'),
-         ('Quick', 'Quick'),
+        ('Quick', 'Quick'),
         ('Dinner', 'Dinner'),
         ('Soup', 'Soup'),
         ('Salad', 'Salad'),
     )
     category = models.CharField(max_length=10, choices=CATEGORY_TYPES, blank = False, null=True, help_text="Please enter the category of your recipe. It will be displayed on All recipes page.")
-    stars = models.DecimalField(max_digits=2, decimal_places=1, default=0, editable=False)
-    votes = models.IntegerField(default=0, editable=False)
     seen = models.BigIntegerField(default=0, editable=False)
 
     def publish(self):
@@ -53,94 +51,6 @@ class Post(models.Model):
         self.seen = x
         self.save(update_fields=["seen"])
         return self.seen
-
-    def vote(self):
-        x = int(self.voted)
-        x += 1
-        self.voted = x
-        self.save(update_fields=["voted"])
-        return self.rating
-
-    def rate_half(self):
-        x = int(self.stars*10)
-        x += 5
-        x = int(round(x/20))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate1(self):
-        x = int(self.stars)
-        x += 1
-        x = int(round(x / 2))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate1_half(self):
-        x = int(self.stars*10)
-        x += 15
-        x = int(round(x/20))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-
-    def rate2(self):
-        x = int(self.stars)
-        x += 2
-        x = int(round(x / 2))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate2_half(self):
-        x = int(self.stars*10)
-        x += 25
-        x = int(round(x/20))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate3(self):
-        x = int(self.stars)
-        x += 3
-        x = int(round(x / 2))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate3_half(self):
-        x = int(self.stars*10)
-        x += 35
-        x = int(round(x/20))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate4(self):
-        x = int(self.stars)
-        x += 4
-        x = int(round(x / 2))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate4_half(self):
-        x = int(self.stars*10)
-        x += 45
-        x = int(round(x/20))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
-
-    def rate5(self):
-        x = int(self.stars)
-        x += 5
-        x = int(round(x / 2))
-        self.stars = x
-        self.save(update_fields=["stars"])
-        return self.stars
 
 class Ingredient(models.Model):
     title = models.CharField(max_length=200)
