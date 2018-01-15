@@ -64,7 +64,13 @@ def salad(request):
 # If there is a post, it's opened in post_detail.html or an error
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    numbers = [0,1,2,3,4,5]
+    half_user = False
+    z = post.stars
+    half = True
+    goldenstar = 'xx'
+    greystar= 'xx'
+    return render(request, 'blog/post_detail.html', {'post': post, 'goldenstar': goldenstar, 'greystar': greystar, 'half': half})
 
 # Means that login is required to edit these fields
 @login_required

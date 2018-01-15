@@ -715,6 +715,7 @@ ul.social-buttons li a:hover {
     /*width: 50px;*/
 }
 
+
 .ingredient-input #ingr-description {
     /* width: 290px; */
 }
@@ -776,6 +777,10 @@ ul.social-buttons li a:hover {
     float: right;
     opacity: .7;
 }
+  .rating > input:checked + label:hover, /* hover current star when changing rating */
+  .rating > input:checked ~ label:hover,
+  .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+  .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
 
 .ingredient-input .button-minus2:hover {
     cursor: pointer;
@@ -785,3 +790,4 @@ ul.social-buttons li a:hover {
 .amount-td {
     max-width: 30px;
 }
+

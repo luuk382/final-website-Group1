@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'versatileimagefield',
     'rest_framework',
+    'star_ratings',
 ]
 
 MIDDLEWARE = [

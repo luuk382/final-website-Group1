@@ -26,7 +26,8 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
-
+    <!--CSS for star rating -->
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
     <!--CSS for the Galery-->
     <link rel="stylesheet" href="{% static 'css/blueimp-gallery.min.css' %}">
     <!--Custom CSS-->
@@ -170,7 +171,10 @@
     <!-- JS file for this project -->
     <script src="{% static 'js/main.js' %}"></script>
 
+    <!-- JS for star rating -->
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
     {% block script %} {% endblock %}
+
 </body>
 
 </html>
