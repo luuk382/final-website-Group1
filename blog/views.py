@@ -20,6 +20,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework import status
 from .serializers import PostSerializer, CommentSerializer  
+from .filters import UserFilter, PostFilter, PostDifficultyFilter
+
 
 # Will only show published posts
 def post_list(request):
@@ -27,7 +29,10 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_categories(request):
-    return render(request, 'blog/post_categories.html')
+    post_list = Post.objects.all()
+    post_filter = PostFilter(request.GET, queryset=post_list)
+    return render(request, 'blog/post_categories.html', {'filter': post_filter})
+
 
 def home(request):
     return render(request, 'blog/home.html')
@@ -40,29 +45,41 @@ def gallery(request):
     return render(request, 'blog/gallery.html')
 
 def vegan(request):
+    post_list = Post.objects.filter(category="Vegan").order_by('published_date')
+    post_filter = PostDifficultyFilter(request.GET, queryset=post_list)
     posts = Post.objects.filter(category="Vegan").order_by('published_date')
-    return render(request, 'blog/vegan.html', {'posts': posts})
+    return render(request, 'blog/vegan.html', {'posts': posts, 'filter': post_filter})
 
 def dessert(request):
+    post_list = Post.objects.filter(category="Dessert").order_by('published_date')
+    post_filter = PostDifficultyFilter(request.GET, queryset=post_list)
     posts = Post.objects.filter(category="Dessert").order_by('published_date')
-    return render(request, 'blog/dessert.html', {'posts': posts})
+    return render(request, 'blog/dessert.html', {'posts': posts, 'filter': post_filter})
 
 def quick(request):
+    post_list = Post.objects.filter(category="Quick").order_by('published_date')
+    post_filter = PostDifficultyFilter(request.GET, queryset=post_list)
     posts = Post.objects.filter(category="Quick").order_by('published_date')
   
-    return render(request, 'blog/quick.html', {'posts': posts})
+    return render(request, 'blog/quick.html', {'posts': posts,'filter': post_filter})
 
 def dinner(request):
+    post_list = Post.objects.filter(category="Dinner").order_by('published_date')
+    post_filter = PostDifficultyFilter(request.GET, queryset=post_list)
     posts = Post.objects.filter(category="Dinner").order_by('published_date')
-    return render(request, 'blog/dinner.html', {'posts': posts})
+    return render(request, 'blog/dinner.html', {'posts': posts, 'filter': post_filter})
 
 def soup(request):
+    post_list = Post.objects.filter(category="Soup").order_by('published_date')
+    post_filter = PostDifficultyFilter(request.GET, queryset=post_list)
     posts = Post.objects.filter(category="Soup").order_by('published_date')
-    return render(request, 'blog/soup.html', {'posts': posts})
+    return render(request, 'blog/soup.html', {'posts': posts, 'filter': post_filter})
 
 def salad(request):
+    post_list = Post.objects.filter(category="Salad").order_by('published_date')
+    post_filter = PostDifficultyFilter(request.GET, queryset=post_list)
     posts = Post.objects.filter(category="Salad").order_by('published_date')
-    return render(request, 'blog/salad.html', {'posts': posts})
+    return render(request, 'blog/salad.html', {'posts': posts, 'filter': post_filter})
   
 
 # If there is a post, it's opened in post_detail.html or an error

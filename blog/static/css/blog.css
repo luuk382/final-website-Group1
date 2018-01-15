@@ -799,3 +799,26 @@ ul.social-buttons li a:hover {
 .login {
   padding-top:100px;
 }
+
+
+.btn-xs {
+  font-size: 10px;
+  padding: 7px 12px;
+}
+
+.star-ratings-rating-average {
+  font-size: 11px;
+  float: right;
+  padding-right: 4px;
+}
+
+.star-ratings-rating-count {
+  font-size: 11px;
+  float: right;
+  padding-right: 4px;
+}
+.star-ratings-rating-user {
+  font-size: 11px;
+  float: right;
+  padding-right: 4px;
+}

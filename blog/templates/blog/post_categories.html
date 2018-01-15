@@ -5,96 +5,87 @@
 
 
 
-{% block allPostCategories %}
+
+
+{% block userPosts %}
 <!-- Portfolio Recipes Grid -->
 <section class="bg-light" id="portfolio">
   <div class="container">
+        
     <div class="row">
+        
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">Recipes</h2>
-        <h3 class="section-subheading text-muted">Check our collections of healthy vegetarian meals </h3>
-      </div>
-    </div>
-    <div class="row">
+            
+                 
+            <h2 class="section-heading text-uppercase">Recipes</h2>
+            <h3 class="section-subheading text-muted">Check our collections of healthy vegetarian meals </h3>
+          </div>
+          <div class="col-lg-12 text-center form">
+      
+          <form method="get" class = "form">
+    
+                {{ filter.form.as_p }}
+                
+                <button type="submit" class=" btn btn-xs btn-primary">Search</button>
+            </form>
+        
+            </div>
+      {% for post in filter.qs %} {% if post.author == request.user %}
       <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="{% url 'vegan' %}">
-          <div class="portfolio-hover">
+        <a class="portfolio-link" a href="{% url 'post_detail' pk=post.pk %}">
+          <div id="personal-portfolio-hover" class="portfolio-hover">
             <div class="portfolio-hover-content">
-              <i class="fa fa-leaf fa-2x"></i>
+              <i class="fa fa-cutlery fa-2x"></i>
             </div>
           </div>
-          <img class="img-fluid" src="../static/img/portfolio/01-thumbnail.jpg" alt="">
+          {% if post.image %}
+          <img class = "img-fluid" src="{{post.image.crop.800x600 }}" />
+           {% endif %}
         </a>
         <div class="portfolio-caption">
-          <h4>Vegan</h4>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="{% url 'dessert' %}">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-leaf fa-2x"></i>
-            </div>
+        
+          <h4>{{ post.title }}</h4>
+    
+          <div class="date">
+            {{ post.published_date|date:'F d, Y'}}
+            <span>by</span>
+            <span class="author-date"><a href="{% url 'profile' pk=post.author.pk %}">{{post.author}}</a></span>
+            <span>
+              <a href="{% url 'post_detail' pk=post.pk %}">
+                {% if post.author == request.user %}
+                Comments: {{ post.comments.count }}
+                {% else %}
+                 Comments: {{ post.approved_comments.count }}
+                {% endif%}
+              </a>
+
+            </span>
           </div>
-          <img class="img-fluid" src="../static/img/portfolio/02-thumbnail.jpg" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4>Desserts</h4>
+          <p class="text-muted">{{post.description}}
+          </p>
+          <span class="time">
+            <i class="fa fa-clock-o fa-1x"></i> {{post.cookingtime}} Min</span>
+          <span class="difficulty">
+            {% if post.difficulty == "Easy"%}
+            <i class="fa fa-spoon fa-1x"></i> Easy</span>
+          {% elif post.difficulty == "Medium"%}
+          <i class="fa fa-spoon fa-1x"></i>
+          <i class="fa fa-spoon fa-1x"></i> Meduim</span>
+          {% elif post.difficulty == "Difficult" %}
+          <i class="fa fa-spoon fa-1x"></i>
+          <i class="fa fa-spoon fa-1x"></i>
+          <i class="fa fa-spoon fa-1x"></i> Difficult</span>
+          {% endif %}
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="{% url 'quick' %}">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-leaf fa-2x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="../static/img/portfolio/03-thumbnail.jpg" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4>Quick</h4>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="{% url 'dinner' %}">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-leaf fa-2x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="../static/img/portfolio/04-thumbnail.jpg" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4>Dinner</h4>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="{% url 'soup' %}">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-leaf fa-2x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="../static/img/portfolio/05-thumbnail.jpg" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4>Soups</h4>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 portfolio-item">
-        <a class="portfolio-link" href="{% url 'salad' %}">
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content">
-              <i class="fa fa-leaf fa-2x"></i>
-            </div>
-          </div>
-          <img class="img-fluid" src="../static/img/portfolio/06-thumbnail.jpg" alt="">
-        </a>
-        <div class="portfolio-caption">
-          <h4>Salads</h4>
-        </div>
-      </div>
+      {% endif%}
+    
+      {% endfor %}
     </div>
   </div>
 </section>
+
 {% endblock %}
+
+
+

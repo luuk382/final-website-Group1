@@ -8,6 +8,7 @@ from django.db.models.signals import post_save
 import datetime
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+import django_filters
 
 
 # Create your models here.
@@ -59,6 +60,7 @@ class Post(models.Model):
         self.seen = x
         self.save(update_fields=["seen"])
         return self.seen
+
 
 class Ingredient(models.Model):
     title = models.CharField(max_length=200)
@@ -192,3 +194,4 @@ class Friend (models.Model):
             current_user=current_user
         )
         friend.users.remove(new_friend)
+

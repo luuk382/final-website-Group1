@@ -10,6 +10,7 @@
   white-space: nowrap;
   list-style: none outside none;
   overflow: hidden;
+ 
 }
 /* line 14, ../sass/star-ratings.scss */
 .star-ratings ul li {

@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'versatileimagefield',
     'rest_framework',
     'star_ratings',
+    'django_filters',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -188,3 +190,6 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('headshot_small', 'crop__150x175'),
     ]
 }
+
+STAR_RATINGS_STAR_WIDTH = 15
+STAR_RATINGS_STAR_HEIGHT = 15

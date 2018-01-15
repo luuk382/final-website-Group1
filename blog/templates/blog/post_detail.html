@@ -50,17 +50,20 @@
                 {% if not post.published_date %}
                 <a class="btn btn-default btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
                 {% endif %}
-                <h2> Rate </h2>
+                <hr>
+              
+                <p> RECIPE RATING </p>
                 {% if user.is_authenticated %}
                 <form method="POST" >{% csrf_token %}
-                  {% ratings post %}
+                 {% ratings post %}
                 </form>
                 {% else %}
-                  Please <a class="portfolio-link" href="{% url 'login' %}">login</a> to rate this recipe.<br>
+                 <p>Please <a class="portfolio-link" href="{% url 'login' %}">login</a> to rate this recipe.<br></p>
 
                 {% endif %}
+           
 
-                This recipe was viewed {{ post.increase }} times.
+                <p>This recipe was viewed {{ post.increase }} times.</p>
             </div>
         </div>
         </div>
