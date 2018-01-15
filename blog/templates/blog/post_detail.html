@@ -31,8 +31,21 @@
                 <img class = "img-fluid d-block mx-auto" src="{{post.image.url}}" /> <br> {% endif %}
 
                 <div modal-body>
+                    
+                    <h2>Ingredients</h2>
+                    <ul>
+                    {% for ingredient in post.ingredients.all %}
+                    <li> </i>{{ingredient.quantity}}  {{ingredient.measurement}}  {{ingredient.title}} </li>
+                    {% endfor %}
+                    </ul>
                     <h2>Instructions</h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
+                    <ol>
+                            {% for step in post.steps.all %}
+                            <li> </i>{{step.description}}  </li>
+                            {% endfor %}
+                    </ol>
+                   
+                   </ol>
                 </div>
                 {% if not post.published_date %}
                 <a class="btn btn-default btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>

@@ -7,8 +7,8 @@ from versatileimagefield.fields import VersatileImageField
 # Create your models here.
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
+    instructions = models.TextField(blank = True, null = True, default = '')
     title = models.CharField(max_length=200) #title can be the max of 200 characters
-    text = models.TextField()
     description = models.TextField(max_length=150, blank=False, help_text="Short summary for All recipes page", null=True, )
     image = VersatileImageField(upload_to='post_image', blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
@@ -101,7 +101,6 @@ class Post(models.Model):
         self.save(update_fields=["rating"])
         return self.rating
 
-"""
 class Ingredient(models.Model):
     title = models.CharField(max_length=200)
     quantity = models.CharField(max_length=10)
@@ -112,7 +111,8 @@ class Ingredient(models.Model):
         ('kg', 'kg'),
         ('tsp', 'tsp'),
         ('ml', 'ml'),
-         ('l', 'l'),
+        ('piece', 'piece'),
+        ('l', 'l'),
     )
     measurement = models.CharField(max_length=200, choices=MEASUREMENT_UNITS, blank=True, null=True)
     post = models.ForeignKey('blog.Post', related_name='ingredients')
@@ -124,7 +124,16 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.title
 
-"""
+class Step(models.Model):
+    description = models.CharField(max_length=300)
+    step_number = models.IntegerField(default = 0)
+    post = models.ForeignKey('blog.Post', related_name='steps')
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.description
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
