@@ -793,6 +793,9 @@ ul.social-buttons li a:hover {
 }
 
 .post {
-		padding-top:100px
+		padding-top:100px;
+}
 
+.login {
+  padding-top:100px;
 }
