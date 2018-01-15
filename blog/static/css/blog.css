@@ -777,10 +777,15 @@ ul.social-buttons li a:hover {
     float: right;
     opacity: .7;
 }
-  .rating > input:checked + label:hover, /* hover current star when changing rating */
-  .rating > input:checked ~ label:hover,
-  .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-  .rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+.galllery-page {
+	padding-top: 100px;
+	margin-top: 10px;
+}
+
+.portfolio {
+	padding-top: 100px:;
+}
 
 .ingredient-input .button-minus2:hover {
     cursor: pointer;
