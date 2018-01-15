@@ -1,14 +1,16 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.utils import timezone
-from .models import Post, Comment, UserProfile, Friend
-from django.contrib.auth.decorators import login_required
+import json
+
+from .models import Post, Comment, UserProfile, Friend, Ingredient, Step
 from .forms import (
     PostForm, 
     CommentForm, 
     EditProfileForm,
     ProfileForm
     )
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.utils import timezone
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.db.models.functions import Cast
@@ -83,6 +85,26 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+
+            ingredients = json.loads(request.POST['ingredients'])
+            steps = json.loads(request.POST['steps'])
+
+            for ingredient in ingredients.values():
+                if ingredient != "":
+                    i = Ingredient()
+                    i.title = ingredient["description"]
+                    i.quantity = ingredient["amount"]
+                    i.measurement = ingredient["unit"]
+                    i.post = post
+                    i.save()
+
+            for number, step in enumerate(steps):
+                s = Step()
+                s.step_number = number + 1
+                s.description = step
+                s.post = post
+                s.save()
+
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm()
@@ -91,6 +113,7 @@ def post_new(request):
                 'blog/post_edit.html',
                 {'form': form, 'test_var': measurement_units}
             )
+
 
 
 @login_required
@@ -162,16 +185,39 @@ def password(request,pk):
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    ingredient = Ingredient.objects.filter(post = post) 
+    measurement_units = [u[0] for u in Ingredient.MEASUREMENT_UNITS]
     if request.method == "POST":
         form = PostForm(request.POST,  request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+
+            ingredients = json.loads(request.POST['ingredients'])
+            steps = json.loads(request.POST['steps'])
+
+            for ingredient in ingredients.values():
+                if ingredient != "":
+                    i = Ingredient()
+                    i.title = ingredient["description"]
+                    i.quantity = ingredient["amount"]
+                    i.measurement = ingredient["unit"]
+                    i.post = post
+                    i.save()
+
+            for number, step in enumerate(steps):
+                s = Step()
+                s.step_number = number + 1
+                s.description = step
+                s.post = post
+                s.save()
+
+
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form})
+    return render(request, 'blog/post_edit.html', {'form': form, 'test_var': measurement_units})
 
 
 @login_required

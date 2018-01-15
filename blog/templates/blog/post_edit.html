@@ -1,22 +1,43 @@
 {% extends 'blog/base.html' %}
 {% block title %}<title>Edit Post</title> {% endblock %}
 
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'js/add_post_logic.js' %}"></script>
+{% endblock %}
+
 {% block editPost %}
 <section id = "portfolio">
-<div class="content container">
+    <div class="content container">
         <div class="row">
             <div class="col-md-8">
-                    <h1>New post</h1>
-                    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="save btn btn-default btn-primary">Save</button>
-                    </form>
-                   
-                  
-                    
+                <h1>New post</h1>
+                <form method="POST" class="post-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+
+                    {% if field.name == "image"  %}
+                        {% include "blog/ingredient_input.html" with test_var=test_var %}
+                        {% include "blog/steps_input.html" %}
+                    {% endif %}
+
+                    <div class="fieldWrapper">
+                        <br>
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                        {% if field.help_text %}
+                        <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+
+                    {% endfor %}
+
+                    <button type="submit" class="save btn btn-default btn-primary">Save</button>
+                </form>
             </div>
         </div>
     </div>
 </section>
 {% endblock %}
-

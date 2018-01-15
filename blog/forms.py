@@ -4,10 +4,10 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Post, Comment, UserProfile
 
 class PostForm(forms.ModelForm):
-
+    
     class Meta:
         model = Post
-        fields = ('title', 'description', 'text', 'image', 'cookingtime', 'difficulty','category',  )
+        fields = ('title', 'description', 'image', 'cookingtime', 'difficulty', 'category')
 
 class CommentForm(forms.ModelForm):
 
@@ -36,3 +36,4 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('description', 'profilePicture', 'birthDate', 'gender', 'weight', 'height', 'allergies', )
+

@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 {% block title %}<title>Recipe Detail</title> {% endblock %}
-
+{% load ratings %}
 {% block postDetail %}
 <!-- Portfolio Recipes Grid -->
 
@@ -31,12 +31,36 @@
                 <img class = "img-fluid d-block mx-auto" src="{{post.image.url}}" /> <br> {% endif %}
 
                 <div modal-body>
+                    
+                    <h2>Ingredients</h2>
+                    <ul>
+                    {% for ingredient in post.ingredients.all %}
+                    <li> </i>{{ingredient.quantity}}  {{ingredient.measurement}}  {{ingredient.title}} </li>
+                    {% endfor %}
+                    </ul>
                     <h2>Instructions</h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
+                    <ol>
+                            {% for step in post.steps.all %}
+                            <li> </i>{{step.description}}  </li>
+                            {% endfor %}
+                    </ol>
+                   
+                   </ol>
                 </div>
                 {% if not post.published_date %}
                 <a class="btn btn-default btn-primary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
                 {% endif %}
+                <h2> Rate </h2>
+                {% if user.is_authenticated %}
+                <form method="POST" >{% csrf_token %}
+                  {% ratings post %}
+                </form>
+                {% else %}
+                  Please <a class="portfolio-link" href="{% url 'login' %}">login</a> to rate this recipe.<br>
+
+                {% endif %}
+
+                This recipe was viewed {{ post.increase }} times.
             </div>
         </div>
         </div>
@@ -52,10 +76,9 @@
         {% if post.author == request.user or comment.author_user == request.user or comment.approved_comment %}
         <div class="comment">
             <div class="date comment-date">
-                    <strong>{{ comment.author }}</strong> <span>says</span><br>
                 {{ comment.created_date|date:'F d, Y' }}
                 <span>at</span> {{ comment.created_date|date:'P' }}
-                <span>by</span>
+                <span>by</span> <strong>{{ comment.author }}</strong>
                 {% if not comment.approved_comment %}
                 <div class="save">
                 <a class="btn btn-default btn-comment-approve" id = "btn-comment-approve" href="{% url 'comment_remove' pk=comment.pk %}">
@@ -90,3 +113,8 @@
 
 {% endblock %}
 
+{% block javascript %}
+<script>
+
+</script>
+{% endblock %}

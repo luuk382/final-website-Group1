@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,4 +31,6 @@ urlpatterns = [
     url(r'^profile/(?P<pk>\d+)/password/$', views.password, name='password'),
     url(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$', views.change_friend, name='change_friend'),
     url(r'^friends/(?P<pk>\d+)/$', views.friends_list, name='friends_list'),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -13,8 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200) #title can be the max of 200 characters 
-    text = models.TextField()
+    instructions = models.TextField(blank = True, null = True, default = '')
+    title = models.CharField(max_length=200) #title can be the max of 200 characters
     description = models.TextField(max_length=150, blank=False, help_text="Short summary for All recipes page", null=True, )
     image = VersatileImageField(upload_to='post_image', blank=False, null=True)
     created_date = models.DateTimeField(default=timezone.now)
@@ -33,12 +33,15 @@ class Post(models.Model):
     CATEGORY_TYPES = (
         ('Vegan', 'Vegan'),
         ('Dessert', 'Dessert'),
-         ('Quick', 'Quick'),
+        ('Quick', 'Quick'),
         ('Dinner', 'Dinner'),
         ('Soup', 'Soup'),
         ('Salad', 'Salad'),
     )
     category = models.CharField(max_length=10, choices=CATEGORY_TYPES, blank = False, null=True, help_text="Please enter the category of your recipe. It will be displayed on All recipes page.")
+
+    seen = models.BigIntegerField(default=0, editable=False)
+
 
     def publish(self):
         self.published_date = timezone.now()
@@ -50,8 +53,13 @@ class Post(models.Model):
     def approved_comments(self):
         return self.comments.filter(approved_comment=True)
 
+    def increase(self):
+        x = int(self.seen)
+        x += 1
+        self.seen = x
+        self.save(update_fields=["seen"])
+        return self.seen
 
-"""
 class Ingredient(models.Model):
     title = models.CharField(max_length=200)
     quantity = models.CharField(max_length=10)
@@ -62,7 +70,8 @@ class Ingredient(models.Model):
         ('kg', 'kg'),
         ('tsp', 'tsp'),
         ('ml', 'ml'),
-         ('l', 'l'),
+        ('piece', 'piece'),
+        ('l', 'l'),
     )
     measurement = models.CharField(max_length=200, choices=MEASUREMENT_UNITS, blank=True, null=True)
     post = models.ForeignKey('blog.Post', related_name='ingredients')
@@ -73,8 +82,17 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.title
- 
-""" 
+
+class Step(models.Model):
+    description = models.CharField(max_length=300)
+    step_number = models.IntegerField(default = 0)
+    post = models.ForeignKey('blog.Post', related_name='steps')
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.description
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
