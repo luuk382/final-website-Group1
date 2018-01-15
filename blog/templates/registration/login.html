@@ -1,7 +1,6 @@
 {% extends "blog/base.html" %}
 {% block title %}<title>Log In</title> {% endblock %}
 {% block userLogin %}
-<div class="portfolio">
 <div class="content container">
         <div class="row">
             <div class="col-md-8">
@@ -15,7 +14,7 @@
             <p>
               {{ field.label_tag }}<br>
               {{ field }}
-
+              
               {% endfor %} <br><br>
         <input type="submit" class = " btn btn-primary" value="LOG IN" />
         <input type="hidden" name="next" value="{{ next }}" />
@@ -24,5 +23,5 @@
             </div>
         </div>
 </div>
-</div>
 {% endblock %}
+
