@@ -5,7 +5,7 @@ from rest_framework import serializers
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = ('title', 'description', 'text', 'image', 'cookingtime', 'difficulty','category',)
+        fields = ('title', 'description', 'instructions', 'image', 'cookingtime', 'difficulty','category',)
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
