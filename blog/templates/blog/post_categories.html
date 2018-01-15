@@ -30,7 +30,7 @@
             </form>
         
             </div>
-      {% for post in filter.qs %} {% if post.author == request.user %}
+      {% for post in filter.qs %} 
       <div class="col-md-4 col-sm-6 portfolio-item">
         <a class="portfolio-link" a href="{% url 'post_detail' pk=post.pk %}">
           <div id="personal-portfolio-hover" class="portfolio-hover">
@@ -78,7 +78,7 @@
           {% endif %}
         </div>
       </div>
-      {% endif%}
+    
     
       {% endfor %}
     </div>
