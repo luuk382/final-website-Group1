@@ -35,5 +35,5 @@ class ProfileForm(forms.ModelForm):
     
     class Meta:
         model = UserProfile
-        fields = ('description', 'profilePicture', 'birthDate', 'gender', 'weight', 'height', 'allergies', )
+        fields = ('description', 'profilePicture', 'birthDate', 'gender', 'weight', 'height', 'allergies', 'vegetariantype')
 
