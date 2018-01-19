@@ -29,7 +29,7 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_categories(request):
-    post_list = Post.objects.all()
+    post_list = Post.objects.filter(published_date__isnull=False).order_by('created_date')
     post_filter = PostFilter(request.GET, queryset=post_list)
     return render(request, 'blog/post_categories.html', {'filter': post_filter})
 
