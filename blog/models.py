@@ -148,7 +148,7 @@ class UserProfile(models.Model):
     ('Sesame', 'Sesame'),
     ('Other', 'Other'),
 )
-    allergies = models.CharField(max_length=200, choices=ALLERGY_CHOICES, blank=False, null=True)
+    allergies = models.CharField(max_length=200, choices=ALLERGY_CHOICES, blank=True, null=True)
 
     DIETARY_CHOICES = (
     ('Vegan', 'Vegan'),
@@ -156,7 +156,7 @@ class UserProfile(models.Model):
     ('Ovo Vegetarian', 'Ovo Vegetarian'),
     ('Lacto-ovo vegetarian', 'Lacto-ovo vegetarian'),
 )
-    vegetariantype = models.CharField(verbose_name=_('Vegetarian Type'), max_length=200, choices=DIETARY_CHOICES, blank=False, null=True)
+    vegetariantype = models.CharField(verbose_name=_('Vegetarian Type'), max_length=200, choices=DIETARY_CHOICES, blank=True, null=True)
 
     GENDER_CHOICES = (
     ('Female','Female'),
