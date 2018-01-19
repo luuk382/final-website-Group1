@@ -2,7 +2,7 @@
 {% block title %}<title>Draft List</title> {% endblock %}
 {% block unpublishedcontent %}
     {% for post in posts %}
-        {% if post.author == request.user %}
+       
      
         <div class="post">
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
@@ -11,14 +11,14 @@
            
             
         </div>
-   
-        {% endif %}
+       
         {% empty %}
        <section >
                     <p class="section-heading text-uppercase">You have not created any drafts yet </p>
-                    <p class="section-subheading text-muted"> Add a new draft by pressing + </p>
+                    <p class="section-subheading text-muted"> Add a new draft by pressing New draft in Profile Menu </p>
                   
         </section> 
+       
     {% endfor %}
 {% endblock %}
 
